@@ -1,6 +1,0 @@
-PWD c:/Users/Andrea/GitHuB_projects/test_latex
-INPUT c:/texlive/2022/texmf.cnf
-INPUT c:/texlive/2022/texmf-dist/web2c/texmf.cnf
-INPUT c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Users/Andrea/GitHuB_projects/test_latex/this_is_another_test.tex
-OUTPUT this_is_another_test.log
