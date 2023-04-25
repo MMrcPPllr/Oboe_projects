@@ -1,3 +1,3 @@
-# test_latex
+# Test per file del laboratorio di Oboe
 
-this is a test for collaborative latex project file!
+Mai lavorare nel main!!
