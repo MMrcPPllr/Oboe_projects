@@ -945,8 +945,18 @@ INPUT c:/Program Files/texlive/2022/texmf-dist/tex/latex/translations/translatio
 INPUT c:/Program Files/texlive/2022/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 INPUT c:/Program Files/texlive/2022/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 INPUT c:/Program Files/texlive/2022/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
-OUTPUT Relazione_1.out
+INPUT ./Relazione_1.out
+INPUT Relazione_1.out
+INPUT ./Relazione_1.out
+INPUT Relazione_1.out
+INPUT ./Relazione_1.out
+INPUT Relazione_1.out
+INPUT ./Relazione_1.out
+INPUT Relazione_1.out
 OUTPUT Relazione_1.pdf
+INPUT ./Relazione_1.out
+INPUT ./Relazione_1.out
+OUTPUT Relazione_1.out
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/tfm/public/lm/ec-lmss17.tfm
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/tfm/public/lm/ec-lmss12.tfm
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/tfm/public/lm/ec-lmssbx10.tfm
@@ -991,9 +1001,9 @@ INPUT Relazione_1.aux
 INPUT ./Relazione_1.out
 INPUT ./Relazione_1.out
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
-INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
+INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
@@ -1006,4 +1016,3 @@ INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss17.pfb
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsso10.pfb
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
-INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy8.pfb
