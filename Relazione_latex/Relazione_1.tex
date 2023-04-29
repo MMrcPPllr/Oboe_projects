@@ -1,0 +1,206 @@
+\documentclass[11pt]{article}
+
+% -------------------------------------------------------------------------------- %
+
+% *** LANGUAGE ***
+\usepackage[english,italian]{babel}
+\usepackage[utf8]{inputenc}
+
+% *** PAGE LAYOUT ***
+\usepackage{geometry}     
+\geometry{a4paper,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\usepackage{parskip}  
+\usepackage{enumerate}  
+\setlength{\parindent}{0pt}
+
+
+% *** DEFAULT FONT SELECTION ***
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\renewcommand*\familydefault{\sfdefault} %	Only if the base font of the document is to be sans serif
+
+% *** GRAPHICS *** 
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{float}
+
+% *** AMS MATH ***
+\usepackage{amsmath, amsfonts, amssymb, bm}
+
+% *** ADDITIONAL MATH ***
+\usepackage{empheq}
+\usepackage{systeme}
+\usepackage{mathtools}
+
+\newlength{\cellwidth}
+\settowidth{\cellwidth}{$\displaystyle -2\,\omega_g\, r_g$}
+
+% *** TABLES ***
+%\usepackage{booktabs,topcapt}
+\usepackage{multirow}
+
+
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+
+\usepackage{subcaption}
+\usepackage{siunitx}
+
+
+\usepackage[title]{appendix}
+
+
+% *** OTHER PACKAGES ***
+\usepackage{lipsum}  
+\usepackage{url}
+\usepackage{fancyhdr}
+
+\usepackage{hyperref}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\sffamily\large\bfseries}
+{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\sffamily\bfseries}
+{\thesubsection}{1em}{}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection})}
+
+\lhead{Laurea Magistrale in Ingegneria Meccatronica}
+\rhead{A.A. 2022-23}
+
+
+% -------------------------------------------------------------------------------- %
+
+\title{\vspace{-0.75cm} \Large \textbf{Progettazione di Sistemi di Controllo}\\[0.2cm] \Large \textbf{Controllo Ottimo del pendolo di Furuta} 
+}
+\author{Marco Pallaro \\[0.2cm] 2055621 } 
+\date{}
+
+% -------------------------------------------------------------------------------- %
+
+%\usepackage{fancyhdr}
+%\lhead{Nome Cognome} 
+%\chead{} 
+%\rhead{LABORATORIO \#}
+%\lfoot{}
+%\cfoot{ \thepage/\pageref{LastPage} } 
+%\rfoot{} 
+%\renewcommand{\headrulewidth}{1pt}
+%\renewcommand{\footrulewidth}{0pt}
+
+
+% -------------------------------------------------------------------------------- %
+
+
+\begin{document}
+
+\maketitle				%	print title
+
+
+
+
+\section*{Abstract - To Be Revised}
+
+Il fine dell'attività di laboratorio è il design e lo studio del controllo ottimo del pendolo di Furuta.
+In particolare, il controllo ha come obiettivo la stabilizzazione del pendolo nella sua posizione di equilibrio instabile, ovvero la posizione verticale.
+Di conseguenza, il primo passo è quello di decidere, attraverso diverse prove, quali guadagni o pesi usare nella funzione costo del controllo LQR.
+Successivamente, ottenuto un controllo funzionante, si passa alla discretizzazione di tale controllore, in modo da avvicinarsi alla realtà del problema.
+Di conseguenza si aumenta la complessità del sistema provando ad imporre una traiettoria di inseguimento alla base del pendolo.
+Infine, si ricerca un controllore per lo \textit{swing-up}: si studia un metodo per portare (senza aiuti esterni) il pendolo da una posizione di riposo, e dunque dalla posizione di equilibrio stabile, alla posizione di equilibrio instabile studiata finora, con il pendolo verticale. 
+
+
+\section{Introduzione?}
+
+\subsection{Descrizione del sistema}
+
+
+\subsubsection*{Modello matematico del pendolo}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.3\columnwidth]{example-image-a}
+    \includegraphics[width=.3\columnwidth]{example-image-a}
+	\caption{Evoluzione forzata del sistema in corrispondenza degli ingressi $u_1(t)$ e $u_2(t)$. Si considerano condizioni iniziali nulle}
+	\label{fig:11}
+\end{figure}
+
+Per ricavare le equazioni matematiche del sistema si può utilizzare l'approccio lagrangiano. (*NOTA* rivedi la formula!!)
+Considerando $L = T - U$ dove con $T$ ci si riferisce all'energia cinetica, e con $U$ ci si riferisce all'energia potenziale del sistema, si può scrivere:
+\begin{equation}
+	\sum W_i = \dfrac{dL}{dt}
+\end{equation}
+dove con $\sum W_i$ si considerano tutte le potenze (causate da forze esterne al sistema) agenti sul sistema.
+
+
+Perciò, nel caso di studio, si possono riconoscere due divesi sottosistemi, la base con il motore e il modulo del pendolo.
+Per quanto riguarda la base, è presente l'energia cinetica collegata all'inerzia del motore:
+\begin{equation}
+    T_{base} = \dfrac{1}{2} \, J \, \dot{\alpha}^2
+\end{equation}
+
+Per il pendolo, oltre al termine cinetico, è presente anche il contributo di energia potenziale, perciò:
+\begin{equation}
+    T_{pendolo} = \dfrac{1}{2} \, J \, \dot{\beta}^2 + \dfrac{1}{2} \, m_2 \, \dot{r_{cm}}^T\dot{r_{cm}}
+\end{equation}
+\begin{equation}
+    U_{pendolo} = m_2 \, g\, l\, \cos\,\beta
+\end{equation}
+
+Poichè nel sistema sono presenti due coordinate (l'angolo \alpha del motore e l'amgolo \beta del pendolo) l'equazione associata all'intero sistema è in realtà un sistema di due equazioni:
+\begin{gather}
+	\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot{\alpha}} - \dfrac{\partial L}{\partial \alpha} = C_m - b_1 \, \dot{\alpha} \\
+	\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot{\beta}} - \dfrac{\partial L}{\partial \beta} = C_d? - b_2 \, \dot{\beta}
+\end{gather}
+
+
+
+
+\subsubsection*{Modello fisico del pendolo: descrizione di hardware e software}
+Per effettuare le esperienze si è utilizzato \textit{Qube-Servo 2}, prodotto dalla Quanser. La piattaforma consiste in un motore CC che si interfaccia con l'ambiente MATLAB/Simulink. Gli schemi di controllo sono dunque creati in Simulink e il motore viene comandato, e restituisce dati, in tempo reale al computer.
+Al motore è possibile connettere un modulo che permette di creare il pendolo inverso (pendolo di Furuta).
+
+In generale, dunque, il sistema prevede:
+\begin{description}
+    \item [Input: $V_{in}$] La tensione da dare in ingresso al motore. Il motore CC è infatti controllato in tensione.
+    \item [Output: $\theta$ e $\alpha$] Derivano dalle misure degli encoder presenti nel sistema: uno permette di ottenere la posizione del motore; l'altro la posizione del pendolo.
+\end{description}
+
+\colorbox{yellow}{Altre immagine/robe da scrivere.... bisogna mettere tutte le robe tecniche} 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.3\columnwidth]{example-image-a}
+	\caption{Evoluzione forzata del sistema in corrispondenza degli ingressi $u_1(t)$ e $u_2(t)$. Si considerano condizioni iniziali nulle}
+	\label{fig:1}
+\end{figure}
+
+
+
+
+
+
+
+
+
+\subsection{Descrizione del problema}
+
+
+
+
+\subsection{Descrizione della soluzione}
+
+
+
+
+\section{Attività Sperimentali}
+
+\subsection{Design del controllore LQR}
+\subsection{Dicretizzazione del controllore}
+\subsection{Position tracking}
+\subsection{Swing-up controller}
+
+
+
+\end{document}
