@@ -57,7 +57,7 @@ A(4,3) = A(4,3) - km*km/Rm*B(4);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 % varie condizioni date
-condition = 1;
+condition = input("Inserisci il caso: ");
 switch condition 
         case 1  %expensive vs cheap control cases
              Q1 = diag([1,1,1,1]);
@@ -122,7 +122,8 @@ switch condition
              Q1 = diag([0,1,1,1]);
              R1 = .5;      
              
-        otherwise
+    otherwise
+        error('Te si cojon, manco inserire du numeri te si in grado')
 end
 
 rank_SYS = 4; % Co or Ob has full rank, that is, the rank is equal to the number of states in the state-space mode
@@ -152,20 +153,77 @@ R1^(-1) %è invertibile quindi R non è singolare
 
 %% Da BAGGIO PBH Test
 I=eye(4);
-syms  s
-A1= det(s*I-A)
-PBH_test= rank([s*I-A B])
+syms  lambda
+eqn = det(lambda*I-A)==0;
+Sa = solve(eqn,lambda);
+value_lamda = vpa(Sa)
+
+%% NB ha autovalori positivi --> con la K dovrebbero diventare tutti negativi però
+%va dimostrato questo... 
+syms M_inf M
+% M è una n*n
+M = [M_inf M_inf M_inf M_inf;...
+     M_inf M_inf M_inf M_inf;...
+     M_inf M_inf M_inf M_inf;...
+     M_inf M_inf M_inf M_inf];
+
+eqn_EAR = (A')*M + M*A -M*B*R1^(-1)*(B')*M + Q1 == 0
+Sa_EAR = solve(eqn_EAR,M_inf,'ReturnConditions',true)
+disp('non ce la fa a calcolarlo ...bho.... Non so che cazzo fare bhoo....')
+Sa_EAR_1_1 = vpa(solve(eqn_EAR(1,1),M_inf))
+Sa_EAR_1_2 = vpa(solve(eqn_EAR(1,2),M_inf))
+Sa_EAR_1_3 = vpa(solve(eqn_EAR(1,3),M_inf))
+Sa_EAR_1_4 = vpa(solve(eqn_EAR(1,4),M_inf))
+Sa_EAR_2_1 = vpa(solve(eqn_EAR(2,1),M_inf))
+Sa_EAR_2_2 = vpa(solve(eqn_EAR(2,2),M_inf))
+Sa_EAR_2_3 = vpa(solve(eqn_EAR(2,3),M_inf))
+Sa_EAR_2_4 = vpa(solve(eqn_EAR(2,4),M_inf))
+Sa_EAR_3_1 = vpa(solve(eqn_EAR(3,1),M_inf))
+Sa_EAR_3_2 = vpa(solve(eqn_EAR(3,2),M_inf))
+Sa_EAR_3_3 = vpa(solve(eqn_EAR(3,3),M_inf))
+Sa_EAR_3_4 = vpa(solve(eqn_EAR(3,4),M_inf))
+Sa_EAR_4_1 = vpa(solve(eqn_EAR(4,1),M_inf))
+Sa_EAR_4_2 = vpa(solve(eqn_EAR(4,2),M_inf))
+Sa_EAR_4_3 = vpa(solve(eqn_EAR(4,3),M_inf))
+Sa_EAR_4_4 = vpa(solve(eqn_EAR(4,4),M_inf))
+disp('Non mi ricordo bene ma mi sembra di notare (ma da verificare meglio) che col caso 19 la M può assumere [0 0] mentre nelle altre almeno una soluzione è diversa da 0... (negli altri casi mi pare che nessuno ha [0 0] ma [0 numero]) forse è questo...?')
+
+%% Limitazioni lqr da MATLAB
+% The problem data must satisfy:
+    % 1) the pair (A,B) is stabilizable
+    % 2) R > 0 and Q- N*R^(-1)*N' >=0
+    % 3) (Q-N*R^(-1)*N', A-B*R^(-1)N') has no unobservable mode on the
+    % 4) immaginary axis (or unit cicle in discrete time)
+disp('Limitazioni lqr da MATLAB: Spero che N sia 1 se no bho');
+N=1;
+cond_2 = Q1-N*R1^(-1)*N' 
+disp('caso 19 ha valori < 0 , R è >=0 -->> però anche negli altri casi si hanno <=0');
+cond_3 = eig(Q1-N*R1^(-1)*N', A-B*R1^(-1)*N') % ha due autovalori positivi
+disp('nel caso 19 ho due autovalori positivi qua, quindi non rispetta --> sugli altri sono tutti <=0, mi pare... --> cosa comporta ...?');
+
+
+% %% Hamiltoniana
+% Hamilton = [A -B*R1^(-1)*B';-Q1 -A'];
+% autovalori_H = eig(Hamilton);
+% X_H= [autovalori_H(2)];
+
+%%
+controllability_PBH_test_1= rank([value_lamda(1)*I-A B]);
+controllability_PBH_test_2= rank([value_lamda(2)*I-A B]);
+controllability_PBH_test_3= rank([value_lamda(3)*I-A B]);
+controllability_PBH_test_4= rank([value_lamda(4)*I-A B]);
+
 disp('E allora come cazzo si faaaaaaaaaaaaaaaaaaaaaaaaaaaaa se è sempre 4 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
 K = lqr(A,B,Q1,R1);
 
 
-autovalori = eig(A-B*K)
+autovalori = eig(A-B*K);
 
-a1 = autovalori(1)
-a2 = autovalori(2)
-a3 = autovalori(3)
-a4 = autovalori(4)
+a1 = autovalori(1);
+a2 = autovalori(2);
+a3 = autovalori(3);
+a4 = autovalori(4);
 
 %Fjordan= jordan(F)
 geometrica1= 4 - rank(a1*eye(4)-A);
