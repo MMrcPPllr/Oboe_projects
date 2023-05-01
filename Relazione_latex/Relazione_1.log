@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.9)  29 APR 2023 12:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.9)  1 MAY 2023 11:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -644,9 +644,9 @@ Package pdftex.def Info: example-image-a.pdf  used on input line 123.
 {c:/Program Files/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Program Files/texlive/2022/texmf-dist/tex/latex/mwe/example-image-a.pdf>]
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
-Package pdftex.def Info: example-image-a.pdf  used on input line 174.
+Package pdftex.def Info: example-image-a.pdf  used on input line 185.
 (pdftex.def)             Requested size: 145.11053pt x 108.83406pt.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 206.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 217.
  (c:/Program Files/texlive/2022/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [2] (./Relazione_1.aux)
@@ -656,13 +656,13 @@ Package rerunfilecheck Info: File `Relazione_1.out' has not changed.
 Here is how much of TeX's memory you used:
  19429 strings out of 476029
  374990 string characters out of 5787145
- 1862340 words of memory out of 5000000
+ 1865340 words of memory out of 5000000
  39571 multiletter control sequences out of 15000+600000
  569262 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,11n,77p,1303b,906s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}<c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss12.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss17.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on Relazione_1.pdf (2 pages, 179482 bytes).
+{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}<c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss12.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss17.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on Relazione_1.pdf (2 pages, 178226 bytes).
 PDF statistics:
  133 PDF objects out of 1000 (max. 8388607)
  104 compressed objects within 2 object streams

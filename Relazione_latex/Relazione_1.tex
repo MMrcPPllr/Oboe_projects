@@ -126,38 +126,49 @@ Infine, si ricerca un controllore per lo \textit{swing-up}: si studia un metodo 
 \end{figure}
 
 Per ricavare le equazioni matematiche del sistema si può utilizzare l'approccio lagrangiano. (*NOTA* rivedi la formula!!)
-Considerando $L = T - U$ dove con $T$ ci si riferisce all'energia cinetica, e con $U$ ci si riferisce all'energia potenziale del sistema, si può scrivere:
 \begin{equation}
-	\sum W_i = \dfrac{dL}{dt}
+	\sum_{i}^{} W_i = \dfrac{dL}{dt}
 \end{equation}
-dove con $\sum W_i$ si considerano tutte le potenze (causate da forze esterne al sistema) agenti sul sistema.
+dove $L = T - U$; con $T$ ci si riferisce all'energia cinetica e con $U$ ci si riferisce all'energia potenziale del sistema. Con $\sum W$ si considerano tutte le potenze agenti sul sistema causate solamente da forze esterne a questo. 
 
 
-Perciò, nel caso di studio, si possono riconoscere due divesi sottosistemi, la base con il motore e il modulo del pendolo.
+COnsiderando il caso di studio, innanzitutto è possibile riconoscere due divesi sottosistemi, la base con il motore e il modulo con il pendolo.
 Per quanto riguarda la base, è presente l'energia cinetica collegata all'inerzia del motore:
 \begin{equation}
-    T_{base} = \dfrac{1}{2} \, J \, \dot{\alpha}^2
+    T_{base} = \dfrac{1}{2} \, J_r \, \dot{\theta}^2
 \end{equation}
 
 Per il pendolo, oltre al termine cinetico, è presente anche il contributo di energia potenziale, perciò:
 \begin{equation}
-    T_{pendolo} = \dfrac{1}{2} \, J \, \dot{\beta}^2 + \dfrac{1}{2} \, m_2 \, \dot{r_{cm}}^T\dot{r_{cm}}
+    T_{pendolo} = \dfrac{1}{2} \, J_p \, \dot{\alpha}^2 + \dfrac{1}{2} \, m_2 \, {\dot{r}_{cm}}^T\dot{r}_{cm}
 \end{equation}
 \begin{equation}
-    U_{pendolo} = m_2 \, g\, l\, \cos\,\beta
+    U_{pendolo} = m_2 \, g\, l\, \cos\alpha
 \end{equation}
 
-Poichè nel sistema sono presenti due coordinate (l'angolo $\alpha$ del motore e l'angolo $\beta$ del pendolo) l'equazione associata all'intero sistema è in realtà un sistema di due equazioni:
-\begin{gather}
-	\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot{\alpha}} - \dfrac{\partial L}{\partial \alpha} = C_m - b_1 \, \dot{\alpha} \\
-	\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot{\beta}} - \dfrac{\partial L}{\partial \beta} = C_d? - b_2 \, \dot{\beta}
-\end{gather}
+Poichè nel sistema sono presenti due coordinate (l'angolo $\theta$ del motore e l'angolo $\alpha$ del pendolo) sono presenti due equazioni per descrivere il comportamento del sistema:
+\begin{equation}
+	\left\{
+	\begin{aligned}
+		&\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot{\alpha}} - \dfrac{\partial L}{\partial \alpha} = C_m - b_r \, \dot{\alpha} \\
+		&\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot{\beta}} - \dfrac{\partial L}{\partial \beta} = - b_p \, \dot{\beta}
+	\end{aligned}
+	\right.
+\end{equation}
+\begin{equation}
+	\left\{
+	\begin{aligned}
+		&\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot{\alpha}} - \dfrac{\partial L}{\partial \alpha} = C_m - b_r \, \dot{\alpha} \\
+		&\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot{\beta}} - \dfrac{\partial L}{\partial \beta} = - b_p \, \dot{\beta}
+	\end{aligned}
+	\right.
+\end{equation}
 
 
 
 
 \subsubsection*{Modello fisico del pendolo: descrizione di hardware e software}
-Per effettuare le esperienze si è utilizzato \textit{Qube-Servo 2}, prodotto dalla Quanser. La piattaforma consiste in un motore CC che si interfaccia con l'ambiente MATLAB/Simulink. Gli schemi di controllo sono dunque creati in Simulink e il motore viene comandato, e restituisce dati, in tempo reale al computer.
+Per effettuare le esperienze si è utilizzato \textit{Qube-Servo 2}, prodotto dalla Quanser. La piattaforma consiste in un motore CC che si interfaccia con l'ambiente MATLAB/Simulink. Gli schemi di controllo sono dunque creati in Simulink e il motore viene comandato e restituisce dati in tempo reale al computer.
 Al motore è possibile connettere un modulo che permette di creare il pendolo inverso (pendolo di Furuta).
 
 In generale, dunque, il sistema prevede:

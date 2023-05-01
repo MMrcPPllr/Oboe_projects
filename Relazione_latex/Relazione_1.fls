@@ -1001,9 +1001,9 @@ INPUT Relazione_1.aux
 INPUT ./Relazione_1.out
 INPUT ./Relazione_1.out
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
+INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
-INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT c:/Program Files/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
