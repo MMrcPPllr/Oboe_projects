@@ -24,9 +24,14 @@ C = [br 0;
     0 bp];
 
 K = [0 0; 
-    0 g*mp*lp];
+    0 -g*mp*lp];
 
 %U = [0; tau];
+
+
+
+A = [zeros(2) eye(2)
+    -inv(M)*K -inv(M)*C];
 
 
 
