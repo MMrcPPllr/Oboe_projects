@@ -1,3 +1,4 @@
+%% ciao marco
 %% Motor
 % Resistance
 Rm = 8.4;
