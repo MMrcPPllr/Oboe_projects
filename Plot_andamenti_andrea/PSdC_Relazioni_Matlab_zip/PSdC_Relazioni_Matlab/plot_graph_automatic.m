@@ -46,11 +46,17 @@ graph_alpha_dot_n_1 = strcat('${\dot{\alpha}_{caso\,',graph_legend_caso_n_1,' }}
 
 
 
-%%
+%%%
+% Da dove visualizzare (grafico)
 xlim_inizio  = 2;
 x_lim_fine   = 5;
 
-
+%%%
+% Dimensione immagine da plottare (pixel)
+x0=50;
+y0=100;
+width=740;
+height=500;
 
 %% Plot figure
 %% caso 7) posizione theta
@@ -98,7 +104,7 @@ legend(graph_theta_n, graph_theta_n_1,'interpreter','latex','FontSize',22, 'Loca
 fontsize(gca,scale=1.3)
 xlim([xlim_inizio x_lim_fine])
 ylim tight
-
+set(gcf,'position',[x0,y0,width,height])
 %% caso 7) posizione alpha
 %
 %
@@ -146,7 +152,7 @@ legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Loca
 fontsize(gca,scale=1.3)
 xlim([xlim_inizio x_lim_fine])
 ylim tight
-
+set(gcf,'position',[x0,y0,width,height])
 %% caso 7) velocità theta
 %
 %
@@ -191,7 +197,7 @@ legend(graph_theta_dot_n,graph_theta_dot_n_1,'interpreter','latex','FontSize',22
 fontsize(gca,scale=1.3)
 xlim([xlim_inizio x_lim_fine])
 ylim tight
-
+set(gcf,'position',[x0,y0,width,height])
 %% caso 7) velocità alpha
 %
 %
@@ -237,3 +243,4 @@ legend(graph_alpha_dot_n,graph_alpha_dot_n_1,'interpreter','latex','FontSize',22
 fontsize(gca,scale=1.3)
 xlim([xlim_inizio x_lim_fine])
 ylim tight
+set(gcf,'position',[x0,y0,width,height])
