@@ -44,6 +44,14 @@ graph_alpha_dot_n = strcat('${\dot{\alpha}_{caso\,',graph_legend_caso_n,' }}$');
 graph_alpha_dot_n_1 = strcat('${\dot{\alpha}_{caso\,',graph_legend_caso_n_1,' }}$');
 
 
+
+
+%%
+xlim_inizio  = 2;
+x_lim_fine   = 5;
+
+
+
 %% Plot figure
 %% caso 7) posizione theta
 %
@@ -88,9 +96,8 @@ xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',20)
 ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',20) 
 legend(graph_theta_n, graph_theta_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
 fontsize(gca,scale=1.3)
-xlim([0 15])
-axis tight
-
+xlim([xlim_inizio x_lim_fine])
+ylim tight
 
 %% caso 7) posizione alpha
 %
@@ -137,8 +144,8 @@ xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',20)
 ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',20) 
 legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
 fontsize(gca,scale=1.3)
-xlim([0 15])
-axis tight
+xlim([xlim_inizio x_lim_fine])
+ylim tight
 
 %% caso 7) velocità theta
 %
@@ -182,8 +189,8 @@ xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',20)
 ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',20) 
 legend(graph_theta_dot_n,graph_theta_dot_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
 fontsize(gca,scale=1.3)
-xlim([0 15])
-axis tight
+xlim([xlim_inizio x_lim_fine])
+ylim tight
 
 %% caso 7) velocità alpha
 %
@@ -228,5 +235,5 @@ xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',20)
 ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',20) 
 legend(graph_alpha_dot_n,graph_alpha_dot_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
 fontsize(gca,scale=1.3)
-xlim([0 15])
-axis tight
+xlim([xlim_inizio x_lim_fine])
+ylim tight
