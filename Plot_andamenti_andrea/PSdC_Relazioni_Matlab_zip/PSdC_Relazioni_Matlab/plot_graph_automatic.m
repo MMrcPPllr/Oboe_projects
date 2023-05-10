@@ -28,8 +28,7 @@ plot_signal = '.signals';
 plot_values   = '.values';
 plot_time   = '.time';
 
-caso_n_legend       = '\n 1'; 
-caso_n_1_legend     = '\n 2'; 
+
 graph_alpha_beta = '[Deg]';
 graph_alpha_beta_dot = '[Deg/s]';
 graph_time  = '[s]';
@@ -58,7 +57,7 @@ figure(1)
 caso_n          = '1';
 signal_n_column = '1';
 caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
-caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'));
+caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 set(gcf,'Position',[100 100 600 600])
 % fontsize(gcf,scale=1.3)
@@ -72,7 +71,7 @@ hold on
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 caso_n          = '2';
 signal_n_column = '1';
-caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time))*180/pi;
+caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -105,7 +104,7 @@ figure(2)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 caso_n          = '1';
 signal_n_column = '2';
-caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time))*180/pi;
+caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -121,7 +120,7 @@ hold on
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 caso_n          = '2';
 signal_n_column = '2';
-caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time))*180/pi;
+caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -153,7 +152,7 @@ figure(3)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 caso_n          = '1';
 signal_n_column = '3';
-caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time))*180/pi;
+caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 set(gcf,'Position',[100 100 600 600])
@@ -167,7 +166,7 @@ hold on
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 caso_n          = '2';
 signal_n_column = '3';
-caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time))*180/pi;
+caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 hLine=plot(caso_n_time,caso_n_signal,...
@@ -198,7 +197,7 @@ figure(4)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 caso_n          = '1';
 signal_n_column = '4';
-caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time))*180/pi;
+caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 set(gcf,'Position',[100 100 600 600])
@@ -212,7 +211,7 @@ hold on
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 caso_n          = '2';
 signal_n_column = '4';
-caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time))*180/pi;
+caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 hLine=plot(caso17.simulazione_out.time,caso17.simulazione_out.signals.values(:,4),...
