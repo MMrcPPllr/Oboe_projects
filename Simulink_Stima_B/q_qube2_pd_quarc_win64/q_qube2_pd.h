@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_pd".
  *
- * Model version              : 4.1
+ * Model version              : 4.6
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Fri May 12 17:15:13 2023
+ * C source code generated on : Sat May 13 14:46:55 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -395,11 +395,11 @@
 #endif
 
 #ifndef rtmGetPerTaskSampleHits
-#define rtmGetPerTaskSampleHits(rtm)   ((rtm)->Timing.RateInteraction)
+#define rtmGetPerTaskSampleHits(rtm)   ()
 #endif
 
 #ifndef rtmSetPerTaskSampleHits
-#define rtmSetPerTaskSampleHits(rtm, val) ((rtm)->Timing.RateInteraction = (val))
+#define rtmSetPerTaskSampleHits(rtm, val) ()
 #endif
 
 #ifndef rtmGetPerTaskSampleHitsArray
@@ -870,19 +870,22 @@
 /* Block signals (default storage) */
 typedef struct {
   real_T HILReadEncoderTimebase;       /* '<Root>/HIL Read Encoder Timebase' */
-  real_T RateTransition;               /* '<Root>/Rate Transition' */
+  real_T Step;                         /* '<Root>/Step' */
   real_T Sum1;                         /* '<Root>/Sum1' */
   real_T u0VLimit;                     /* '<Root>/+//- 10V Limit' */
   real_T Countstorad;                  /* '<Root>/Counts to rad' */
   real_T DerivativeFilter;             /* '<Root>/Derivative Filter' */
-  real_T y;                            /* '<Root>/MATLAB Function1' */
-  real_T y_b;                          /* '<Root>/MATLAB Function' */
+  real_T HILReadAnalog;                /* '<Root>/HIL Read Analog' */
+  real_T Gain;                         /* '<Root>/Gain' */
+  real_T TmpSignalConversionAtToWorkspac[2];
+  real_T RateTransition;               /* '<Root>/Rate Transition' */
+  real_T y;                            /* '<Root>/MATLAB Function' */
 } B_q_qube2_pd_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
   real_T HILInitialize_FilterFrequency[2];/* '<Root>/HIL Initialize' */
-  real_T RateTransition_Buffer0;       /* '<Root>/Rate Transition' */
+  real_T HILReadAnalog_Buffer;         /* '<Root>/HIL Read Analog' */
   real_T u;                            /* '<Root>/MATLAB Function' */
   t_card HILInitialize_Card;           /* '<Root>/HIL Initialize' */
   t_task HILReadEncoderTimebase_Task;  /* '<Root>/HIL Read Encoder Timebase' */
@@ -892,13 +895,10 @@ typedef struct {
   } Positionrad_PWORK;                 /* '<Root>/Position (rad)' */
 
   struct {
-    void *LoggedData;
-  } Scope_PWORK;                       /* '<Root>/Scope' */
-
-  struct {
     void *LoggedData[2];
   } Scope1_PWORK;                      /* '<Root>/Scope1' */
 
+  void *HILReadAnalog_PWORK;           /* '<Root>/HIL Read Analog' */
   struct {
     void *LoggedData;
   } ToWorkspace_PWORK;                 /* '<Root>/To Workspace' */
@@ -958,6 +958,9 @@ struct P_q_qube2_pd_T_ {
   uint32_T HILWriteAnalog_channels;   /* Mask Parameter: HILWriteAnalog_channels
                                        * Referenced by: '<Root>/HIL Write Analog'
                                        */
+  uint32_T HILReadAnalog_channels;     /* Mask Parameter: HILReadAnalog_channels
+                                        * Referenced by: '<Root>/HIL Read Analog'
+                                        */
   real_T HILInitialize_OOTerminate;/* Expression: set_other_outputs_at_terminate
                                     * Referenced by: '<Root>/HIL Initialize'
                                     */
@@ -1000,9 +1003,15 @@ struct P_q_qube2_pd_T_ {
   real_T HILInitialize_OOWatchdog[3];  /* Expression: watchdog_other_outputs
                                         * Referenced by: '<Root>/HIL Initialize'
                                         */
-  real_T RateTransition_InitialCondition;/* Expression: 0
-                                          * Referenced by: '<Root>/Rate Transition'
-                                          */
+  real_T Step_Time;                    /* Expression: 3
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T Step_Y0;                      /* Expression: 2
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T Step_YFinal;                  /* Expression: 4
+                                        * Referenced by: '<Root>/Step'
+                                        */
   real_T u0VLimit_UpperSat;            /* Expression: 10
                                         * Referenced by: '<Root>/+//- 10V Limit'
                                         */
@@ -1020,6 +1029,9 @@ struct P_q_qube2_pd_T_ {
                                         */
   real_T DerivativeFilter_D;           /* Computed Parameter: DerivativeFilter_D
                                         * Referenced by: '<Root>/Derivative Filter'
+                                        */
+  real_T Gain_Gain;                    /* Expression: 0.042
+                                        * Referenced by: '<Root>/Gain'
                                         */
   int32_T HILInitialize_CKChannels;
                                  /* Computed Parameter: HILInitialize_CKChannels
@@ -1184,6 +1196,9 @@ struct P_q_qube2_pd_T_ {
   boolean_T HILWriteAnalog_Active;  /* Computed Parameter: HILWriteAnalog_Active
                                      * Referenced by: '<Root>/HIL Write Analog'
                                      */
+  boolean_T HILReadAnalog_Active;    /* Computed Parameter: HILReadAnalog_Active
+                                      * Referenced by: '<Root>/HIL Read Analog'
+                                      */
   uint8_T HILReadEncoderTimebase_Overflow;
                           /* Computed Parameter: HILReadEncoderTimebase_Overflow
                            * Referenced by: '<Root>/HIL Read Encoder Timebase'
@@ -1277,10 +1292,6 @@ struct tag_RTM_q_qube2_pd_T {
       uint16_T TID[3];
     } TaskCounters;
 
-    struct {
-      boolean_T TID1_2;
-    } RateInteraction;
-
     time_T tStart;
     time_T tFinal;
     time_T timeOfLastOutput;
@@ -1360,6 +1371,5 @@ extern RT_MODEL_q_qube2_pd_T *const q_qube2_pd_M;
  *
  * '<Root>' : 'q_qube2_pd'
  * '<S1>'   : 'q_qube2_pd/MATLAB Function'
- * '<S2>'   : 'q_qube2_pd/MATLAB Function1'
  */
 #endif                                 /* RTW_HEADER_q_qube2_pd_h_ */

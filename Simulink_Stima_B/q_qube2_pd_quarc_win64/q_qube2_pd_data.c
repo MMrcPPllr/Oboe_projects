@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_pd".
  *
- * Model version              : 4.1
+ * Model version              : 4.6
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Fri May 12 17:15:13 2023
+ * C source code generated on : Sat May 13 14:46:55 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -25,6 +25,11 @@
 P_q_qube2_pd_T q_qube2_pd_P = {
   /* Mask Parameter: HILWriteAnalog_channels
    * Referenced by: '<Root>/HIL Write Analog'
+   */
+  0U,
+
+  /* Mask Parameter: HILReadAnalog_channels
+   * Referenced by: '<Root>/HIL Read Analog'
    */
   0U,
 
@@ -98,10 +103,20 @@ P_q_qube2_pd_T q_qube2_pd_P = {
    */
   { 0.0, 0.0, 1.0 },
 
-  /* Expression: 0
-   * Referenced by: '<Root>/Rate Transition'
+  /* Expression: 3
+   * Referenced by: '<Root>/Step'
    */
-  0.0,
+  3.0,
+
+  /* Expression: 2
+   * Referenced by: '<Root>/Step'
+   */
+  2.0,
+
+  /* Expression: 4
+   * Referenced by: '<Root>/Step'
+   */
+  4.0,
 
   /* Expression: 10
    * Referenced by: '<Root>/+//- 10V Limit'
@@ -132,6 +147,11 @@ P_q_qube2_pd_T q_qube2_pd_P = {
    * Referenced by: '<Root>/Derivative Filter'
    */
   100.0,
+
+  /* Expression: 0.042
+   * Referenced by: '<Root>/Gain'
+   */
+  0.042,
 
   /* Computed Parameter: HILInitialize_CKChannels
    * Referenced by: '<Root>/HIL Initialize'
@@ -377,6 +397,11 @@ P_q_qube2_pd_T q_qube2_pd_P = {
    * Referenced by: '<Root>/HIL Write Analog'
    */
   0,
+
+  /* Computed Parameter: HILReadAnalog_Active
+   * Referenced by: '<Root>/HIL Read Analog'
+   */
+  1,
 
   /* Computed Parameter: HILReadEncoderTimebase_Overflow
    * Referenced by: '<Root>/HIL Read Encoder Timebase'

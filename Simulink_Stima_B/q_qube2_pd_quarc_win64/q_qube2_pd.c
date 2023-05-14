@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_pd".
  *
- * Model version              : 4.1
+ * Model version              : 4.6
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Fri May 12 17:15:13 2023
+ * C source code generated on : Sat May 13 14:46:55 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -57,23 +57,6 @@ time_T rt_SimUpdateDiscreteEvents(
  */
 static void rate_monotonic_scheduler(void)
 {
-  /* To ensure a deterministic data transfer between two rates,
-   * data is transferred at the priority of a fast task and the frequency
-   * of the slow task.  The following flags indicate when the data transfer
-   * happens.  That is, a rate interaction flag is set true when both rates
-   * will run, and false otherwise.
-   */
-
-  /* tid 1 shares data with slower tid rate: 2 */
-  if (q_qube2_pd_M->Timing.TaskCounters.TID[1] == 0) {
-    q_qube2_pd_M->Timing.RateInteraction.TID1_2 =
-      (q_qube2_pd_M->Timing.TaskCounters.TID[2] == 0);
-
-    /* update PerTaskSampleHits matrix for non-inline sfcn */
-    q_qube2_pd_M->Timing.perTaskSampleHits[5] =
-      q_qube2_pd_M->Timing.RateInteraction.TID1_2;
-  }
-
   /* Compute which subrates run during the next base time step.  Subrates
    * are an integer multiple of the base rate counter.  Therefore, the subtask
    * counter is reset when it reaches its limit (zero means run).
@@ -111,7 +94,7 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
 /* Model output function for TID0 */
 void q_qube2_pd_output0(void)          /* Sample time: [0.0s, 0.0s] */
 {
-  real_T u0;
+  real_T currentTime;
   real_T u1;
   real_T u2;
   if (rtmIsMajorTimeStep(q_qube2_pd_M)) {
@@ -154,35 +137,40 @@ void q_qube2_pd_output0(void)          /* Sample time: [0.0s, 0.0s] */
           q_qube2_pd_DW.HILReadEncoderTimebase_Buffer;
       }
     }
+  }
 
-    /* RateTransition: '<Root>/Rate Transition' */
-    if (q_qube2_pd_M->Timing.RateInteraction.TID1_2) {
-      /* RateTransition: '<Root>/Rate Transition' */
-      q_qube2_pd_B.RateTransition = q_qube2_pd_DW.RateTransition_Buffer0;
-    }
+  /* Step: '<Root>/Step' */
+  currentTime = q_qube2_pd_M->Timing.t[0];
+  if (currentTime < q_qube2_pd_P.Step_Time) {
+    /* Step: '<Root>/Step' */
+    q_qube2_pd_B.Step = q_qube2_pd_P.Step_Y0;
+  } else {
+    /* Step: '<Root>/Step' */
+    q_qube2_pd_B.Step = q_qube2_pd_P.Step_YFinal;
+  }
 
-    /* End of RateTransition: '<Root>/Rate Transition' */
+  /* End of Step: '<Root>/Step' */
 
-    /* Sum: '<Root>/Sum1' */
-    q_qube2_pd_B.Sum1 = q_qube2_pd_B.RateTransition;
+  /* Sum: '<Root>/Sum1' */
+  q_qube2_pd_B.Sum1 = q_qube2_pd_B.Step;
 
+  /* Saturate: '<Root>/+//- 10V Limit' */
+  currentTime = q_qube2_pd_B.Sum1;
+  u1 = q_qube2_pd_P.u0VLimit_LowerSat;
+  u2 = q_qube2_pd_P.u0VLimit_UpperSat;
+  if (currentTime > u2) {
     /* Saturate: '<Root>/+//- 10V Limit' */
-    u0 = q_qube2_pd_B.Sum1;
-    u1 = q_qube2_pd_P.u0VLimit_LowerSat;
-    u2 = q_qube2_pd_P.u0VLimit_UpperSat;
-    if (u0 > u2) {
-      /* Saturate: '<Root>/+//- 10V Limit' */
-      q_qube2_pd_B.u0VLimit = u2;
-    } else if (u0 < u1) {
-      /* Saturate: '<Root>/+//- 10V Limit' */
-      q_qube2_pd_B.u0VLimit = u1;
-    } else {
-      /* Saturate: '<Root>/+//- 10V Limit' */
-      q_qube2_pd_B.u0VLimit = u0;
-    }
+    q_qube2_pd_B.u0VLimit = u2;
+  } else if (currentTime < u1) {
+    /* Saturate: '<Root>/+//- 10V Limit' */
+    q_qube2_pd_B.u0VLimit = u1;
+  } else {
+    /* Saturate: '<Root>/+//- 10V Limit' */
+    q_qube2_pd_B.u0VLimit = currentTime;
+  }
 
-    /* End of Saturate: '<Root>/+//- 10V Limit' */
-
+  /* End of Saturate: '<Root>/+//- 10V Limit' */
+  if (rtmIsMajorTimeStep(q_qube2_pd_M)) {
     /* S-Function (hil_write_analog_block): '<Root>/HIL Write Analog' */
 
     /* S-Function Block: q_qube2_pd/HIL Write Analog (hil_write_analog_block) */
@@ -208,14 +196,33 @@ void q_qube2_pd_output0(void)          /* Sample time: [0.0s, 0.0s] */
     q_qube2_pd_X.DerivativeFilter_CSTATE;
   q_qube2_pd_B.DerivativeFilter += q_qube2_pd_P.DerivativeFilter_D *
     q_qube2_pd_B.Countstorad;
-
-  /* MATLAB Function: '<Root>/MATLAB Function1' */
-  /* MATLAB Function 'MATLAB Function1': '<S2>:1' */
-  /* '<S2>:1:3' */
-  /* '<S2>:1:6' */
-  q_qube2_pd_B.y = (q_qube2_pd_B.u0VLimit / q_qube2_pd_B.DerivativeFilter -
-                    0.042) * 0.005;
   if (rtmIsMajorTimeStep(q_qube2_pd_M)) {
+    /* S-Function (hil_read_analog_block): '<Root>/HIL Read Analog' */
+
+    /* S-Function Block: q_qube2_pd/HIL Read Analog (hil_read_analog_block) */
+    {
+      t_error result = hil_read_analog(q_qube2_pd_DW.HILInitialize_Card,
+        &q_qube2_pd_P.HILReadAnalog_channels, 1,
+        &q_qube2_pd_DW.HILReadAnalog_Buffer);
+      if (result < 0) {
+        msg_get_error_messageA(NULL, result, _rt_error_message, sizeof
+          (_rt_error_message));
+        rtmSetErrorStatus(q_qube2_pd_M, _rt_error_message);
+      }
+
+      q_qube2_pd_B.HILReadAnalog = q_qube2_pd_DW.HILReadAnalog_Buffer;
+    }
+
+    /* Gain: '<Root>/Gain' */
+    q_qube2_pd_B.Gain = q_qube2_pd_P.Gain_Gain * q_qube2_pd_B.HILReadAnalog;
+
+    /* SignalConversion generated from: '<Root>/To Workspace' */
+    q_qube2_pd_B.TmpSignalConversionAtToWorkspac[0] =
+      q_qube2_pd_B.DerivativeFilter;
+    q_qube2_pd_B.TmpSignalConversionAtToWorkspac[1] = q_qube2_pd_B.Gain;
+
+    /* RateTransition: '<Root>/Rate Transition' */
+    q_qube2_pd_B.RateTransition = q_qube2_pd_B.y;
   }
 }
 
@@ -281,10 +288,7 @@ void q_qube2_pd_output2(void)          /* Sample time: [10.0s, 0.0s] */
   q_qube2_pd_DW.u += 2.0;
 
   /* '<S1>:1:10' */
-  q_qube2_pd_B.y_b = q_qube2_pd_DW.u;
-
-  /* RateTransition: '<Root>/Rate Transition' */
-  q_qube2_pd_DW.RateTransition_Buffer0 = q_qube2_pd_B.y_b;
+  q_qube2_pd_B.y = q_qube2_pd_DW.u;
 }
 
 /* Model update function for TID2 */
@@ -546,18 +550,11 @@ void q_qube2_pd_initialize(void)
     }
   }
 
-  /* Start for RateTransition: '<Root>/Rate Transition' */
-  q_qube2_pd_B.RateTransition = q_qube2_pd_P.RateTransition_InitialCondition;
-
-  /* InitializeConditions for RateTransition: '<Root>/Rate Transition' */
-  q_qube2_pd_DW.RateTransition_Buffer0 =
-    q_qube2_pd_P.RateTransition_InitialCondition;
-
   /* InitializeConditions for TransferFcn: '<Root>/Derivative Filter' */
   q_qube2_pd_X.DerivativeFilter_CSTATE = 0.0;
 
   /* SystemInitialize for MATLAB Function: '<Root>/MATLAB Function' */
-  q_qube2_pd_DW.u = 0.0;
+  q_qube2_pd_DW.u = 1.0;
 }
 
 /* Model terminate function */
@@ -797,26 +794,25 @@ RT_MODEL_q_qube2_pd_T *q_qube2_pd(void)
     q_qube2_pd_M->Timing.sampleHits = (&mdlSampleHits[0]);
   }
 
-  rtmSetTFinal(q_qube2_pd_M, 50.0);
+  rtmSetTFinal(q_qube2_pd_M, 10.0);
   q_qube2_pd_M->Timing.stepSize0 = 0.002;
   q_qube2_pd_M->Timing.stepSize1 = 0.002;
   q_qube2_pd_M->Timing.stepSize2 = 10.0;
 
   /* External mode info */
-  q_qube2_pd_M->Sizes.checksums[0] = (1009681053U);
-  q_qube2_pd_M->Sizes.checksums[1] = (1437484819U);
-  q_qube2_pd_M->Sizes.checksums[2] = (2449370253U);
-  q_qube2_pd_M->Sizes.checksums[3] = (2370620072U);
+  q_qube2_pd_M->Sizes.checksums[0] = (1784605671U);
+  q_qube2_pd_M->Sizes.checksums[1] = (883856252U);
+  q_qube2_pd_M->Sizes.checksums[2] = (4181535175U);
+  q_qube2_pd_M->Sizes.checksums[3] = (274937874U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[3];
+    static const sysRanDType *systemRan[2];
     q_qube2_pd_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
     systemRan[1] = &rtAlwaysEnabled;
-    systemRan[2] = &rtAlwaysEnabled;
     rteiSetModelMappingInfoPtr(q_qube2_pd_M->extModeInfo,
       &q_qube2_pd_M->SpecialInfo.mappingInfo);
     rteiSetChecksumsPtr(q_qube2_pd_M->extModeInfo, q_qube2_pd_M->Sizes.checksums);
@@ -833,13 +829,17 @@ RT_MODEL_q_qube2_pd_T *q_qube2_pd(void)
 
   {
     q_qube2_pd_B.HILReadEncoderTimebase = 0.0;
-    q_qube2_pd_B.RateTransition = 0.0;
+    q_qube2_pd_B.Step = 0.0;
     q_qube2_pd_B.Sum1 = 0.0;
     q_qube2_pd_B.u0VLimit = 0.0;
     q_qube2_pd_B.Countstorad = 0.0;
     q_qube2_pd_B.DerivativeFilter = 0.0;
+    q_qube2_pd_B.HILReadAnalog = 0.0;
+    q_qube2_pd_B.Gain = 0.0;
+    q_qube2_pd_B.TmpSignalConversionAtToWorkspac[0] = 0.0;
+    q_qube2_pd_B.TmpSignalConversionAtToWorkspac[1] = 0.0;
+    q_qube2_pd_B.RateTransition = 0.0;
     q_qube2_pd_B.y = 0.0;
-    q_qube2_pd_B.y_b = 0.0;
   }
 
   /* parameters */
@@ -859,7 +859,7 @@ RT_MODEL_q_qube2_pd_T *q_qube2_pd(void)
                 sizeof(DW_q_qube2_pd_T));
   q_qube2_pd_DW.HILInitialize_FilterFrequency[0] = 0.0;
   q_qube2_pd_DW.HILInitialize_FilterFrequency[1] = 0.0;
-  q_qube2_pd_DW.RateTransition_Buffer0 = 0.0;
+  q_qube2_pd_DW.HILReadAnalog_Buffer = 0.0;
   q_qube2_pd_DW.u = 0.0;
 
   /* data type transition information */
@@ -887,9 +887,9 @@ RT_MODEL_q_qube2_pd_T *q_qube2_pd(void)
   q_qube2_pd_M->Sizes.numU = (0);      /* Number of model inputs */
   q_qube2_pd_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   q_qube2_pd_M->Sizes.numSampTimes = (3);/* Number of sample times */
-  q_qube2_pd_M->Sizes.numBlocks = (17);/* Number of blocks */
-  q_qube2_pd_M->Sizes.numBlockIO = (8);/* Number of block outputs */
-  q_qube2_pd_M->Sizes.numBlockPrms = (81);/* Sum of parameter "widths" */
+  q_qube2_pd_M->Sizes.numBlocks = (18);/* Number of blocks */
+  q_qube2_pd_M->Sizes.numBlockIO = (11);/* Number of block outputs */
+  q_qube2_pd_M->Sizes.numBlockPrms = (86);/* Sum of parameter "widths" */
   return q_qube2_pd_M;
 }
 
