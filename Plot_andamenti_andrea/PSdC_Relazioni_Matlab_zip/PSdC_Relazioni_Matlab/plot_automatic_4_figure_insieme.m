@@ -51,9 +51,32 @@ disp('caso 17: ROBUSTO (sta su) + vibra un po ma riesce a stare allo 0 --> tiene
 disp('caso 18: sta a 0 ma neanche il disturbo a 3 s tiene --> è INSTABILE (sta su per miracolo) ');
 disp('caso 19: Non risolvibile ');
 
+%% Commenti post-processing
+%%%
+% Dalla teoria 
+% R grande --> minimizzo energia di controllo (expensive control)
+% R piccola --> cheap control
+% Q grande --> meno cambiamenti per lo stato
+%%% 
+% Commenti visti post processing
+fprintf('\n \n COMMENTI post processing: \n')
+fprintf('caso 1,2 e 3: è sensato... a parità di Q, la risposta dovrebbe essere\n tanto più aggressiva quanto più aumenta R, \n --> quindi minimizzo la u ma lo stato non lo considero molto (giusto? minimizzo il comando a discapito dello stato) --> sensato anche dai grafici   ');
+fprintf('il caso 3 si era scritto tenesse meglio la posizione verso 0--> fa meno variazione di theta in effetti');
+fprintf('');
+
+
+
+
 %% Automatizzazione per il plot
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Per modificare colonne e casi scendi su ogni plot 
 %%%
+% Da modificare: 2 di default
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+numero_di_casi_da_confrontare = 2;%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+
 % Da non modificare
 caso      = 'caso';
 plot_simulation = '.simulazione_out';
@@ -65,31 +88,8 @@ plot_time   = '.time';
 graph_alpha_beta = '[Deg]';
 graph_alpha_beta_dot = '[Deg/s]';
 graph_time  = '[s]';
-graph_legend_caso_n   = '1';
-graph_legend_caso_n_1 = '2';
-graph_theta_n = strcat('${{\theta}_{caso\,', graph_legend_caso_n,'}}$');
-graph_alpha_n = strcat('${{\alpha}_{caso\,', graph_legend_caso_n,'}}$');
-graph_theta_n_1 = strcat('${{\theta}_{caso\,', graph_legend_caso_n_1,'}}$');
-graph_alpha_n_1 = strcat('${{\alpha}_{caso\,', graph_legend_caso_n_1,'}}$');
-graph_theta_dot_n = strcat('${\dot{\theta}_{caso\,',graph_legend_caso_n,' }}$');
-graph_theta_dot_n_1 = strcat('${\dot{\theta}_{caso\,',graph_legend_caso_n_1,' }}$');
-graph_alpha_dot_n = strcat('${\dot{\alpha}_{caso\,',graph_legend_caso_n,' }}$');
-graph_alpha_dot_n_1 = strcat('${\dot{\alpha}_{caso\,',graph_legend_caso_n_1,' }}$');
 
-%%%
-% Da modificare: 2 di default
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-numero_di_casi_da_confrontare = 3;%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% se ho 3 casi da plottare
-graph_legend_caso_n_2 = '3';
-graph_theta_n_2 = strcat('${{\theta}_{caso\,', graph_legend_caso_n_2,'}}$');
-graph_alpha_n_2 = strcat('${{\alpha}_{caso\,', graph_legend_caso_n_2,'}}$');
-graph_theta_dot_n_2 = strcat('${\dot{\theta}_{caso\,',graph_legend_caso_n_2,' }}$');
-graph_alpha_dot_n_2 = strcat('${\dot{\alpha}_{caso\,',graph_legend_caso_n_2,' }}$');
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%
+%%
 % Limiti asse x e y
 limiti_grafico_1 = 1; %1 per attivare
 limite_x_1 = [4.5 6];
@@ -127,6 +127,9 @@ nexttile
 caso_n          = '1';%
 signal_n_column = '1';%
 %%%%%%%%%%%%%%%%%%%%%%%
+fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+graph_theta_n = strcat('${{\theta}_{caso\,', caso_n,'}}$');
+
 caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 
@@ -138,6 +141,9 @@ hold on;
 caso_n          = '2';%
 signal_n_column = '1';%
 %%%%%%%%%%%%%%%%%%%%%%%
+fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+graph_theta_n_1 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
+
 caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 
@@ -157,6 +163,9 @@ switch numero_di_casi_da_confrontare
         caso_n          = '3';%
         signal_n_column = '1';%
         %%%%%%%%%%%%%%%%%%%%%%%
+        fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column));  
+        graph_theta_n_2 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
+
         caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
         caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
         plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
@@ -188,6 +197,9 @@ nexttile
 caso_n          = '1';%
 signal_n_column = '2';%
 %%%%%%%%%%%%%%%%%%%%%%%
+fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+graph_alpha_n = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
+
 caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 
@@ -199,6 +211,9 @@ hold on;
 caso_n          = '2';%
 signal_n_column = '2';%
 %%%%%%%%%%%%%%%%%%%%%%%
+fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+graph_alpha_n_1 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
+
 caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 
@@ -218,6 +233,9 @@ switch numero_di_casi_da_confrontare
         caso_n          = '3';%
         signal_n_column = '2';%
         %%%%%%%%%%%%%%%%%%%%%%%
+        fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+        graph_alpha_n_2 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
+
         caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
         caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
         plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
@@ -249,6 +267,9 @@ nexttile
 caso_n          = '1';%
 signal_n_column = '3';%
 %%%%%%%%%%%%%%%%%%%%%%%
+fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+graph_theta_dot_n = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
+
 caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 
@@ -260,6 +281,9 @@ hold on;
 caso_n          = '2';%
 signal_n_column = '3';%
 %%%%%%%%%%%%%%%%%%%%%%%
+fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+graph_theta_dot_n_1 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
+
 caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 
@@ -278,6 +302,9 @@ switch numero_di_casi_da_confrontare
         caso_n          = '3';%
         signal_n_column = '3';%
         %%%%%%%%%%%%%%%%%%%%%%%
+        fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+        graph_theta_dot_n_2 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
+
         caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
         caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
         plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
@@ -309,6 +336,9 @@ nexttile
 caso_n          = '1';%
 signal_n_column = '4';%
 %%%%%%%%%%%%%%%%%%%%%%%
+fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+graph_alpha_dot_n = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
+
 caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 
@@ -320,6 +350,9 @@ hold on;
 caso_n          = '2';%
 signal_n_column = '4';%
 %%%%%%%%%%%%%%%%%%%%%%%
+fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+graph_alpha_dot_n_1 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
+
 caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
 caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
 
@@ -339,6 +372,9 @@ switch numero_di_casi_da_confrontare
         caso_n          = '3';%
         signal_n_column = '4';%
         %%%%%%%%%%%%%%%%%%%%%%%
+        fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+        graph_alpha_dot_n_2 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
+
         caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
         caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
         plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
@@ -365,17 +401,30 @@ title("Stima: $z$",'Interpreter','latex', 'FontSize', 22)
 
 
 
-%% Commenti post-processing
-%%%
-% Dalla teoria 
-% R grande --> minimizzo energia di controllo (expensive control)
-% R piccola --> cheap control
-% Q grande --> meno cambiamenti per lo stato
-%%% 
-% Commenti visti post processing
-fprintf('\n \n COMMENTI post processing: \n')
-fprintf('caso 1,2 e 3: è sensato... a parità di Q, la risposta dovrebbe essere\n tanto più aggressiva quanto più aumenta R, \n --> quindi minimizzo la u ma lo stato non lo considero molto (giusto? minimizzo il comando a discapito dello stato) --> sensato anche dai grafici   ');
-fprintf('il caso 3 si era scritto tenesse meglio la posizione verso 0--> fa meno variazione di theta in effetti');
-fprintf('i');
 
 
+
+
+
+
+
+
+
+%graph_legend_caso_n   = '1';
+%graph_legend_caso_n_1 = '2';
+%graph_theta_n = strcat('${{\theta}_{caso\,', graph_legend_caso_n,'}}$');
+%graph_alpha_n = strcat('${{\alpha}_{caso\,', graph_legend_caso_n,'}}$');
+%graph_theta_n_1 = strcat('${{\theta}_{caso\,', graph_legend_caso_n_1,'}}$');
+%graph_alpha_n_1 = strcat('${{\alpha}_{caso\,', graph_legend_caso_n_1,'}}$');
+%graph_theta_dot_n = strcat('${\dot{\theta}_{caso\,',graph_legend_caso_n,' }}$');
+% graph_theta_dot_n_1 = strcat('${\dot{\theta}_{caso\,',graph_legend_caso_n_1,' }}$');
+%graph_alpha_dot_n = strcat('${\dot{\alpha}_{caso\,',graph_legend_caso_n,' }}$');
+%graph_alpha_dot_n_1 = strcat('${\dot{\alpha}_{caso\,',graph_legend_caso_n_1,' }}$');
+
+% se ho 3 casi da plottare --> per il caso 3 (unico)
+%graph_legend_caso_n_2 = '3';
+%graph_theta_n_2 = strcat('${{\theta}_{caso\,', graph_legend_caso_n_2,'}}$');
+%graph_alpha_n_2 = strcat('${{\alpha}_{caso\,', graph_legend_caso_n_2,'}}$');
+%graph_theta_dot_n_2 = strcat('${\dot{\theta}_{caso\,',graph_legend_caso_n_2,' }}$');
+%graph_alpha_dot_n_2 = strcat('${\dot{\alpha}_{caso\,',graph_legend_caso_n_2,' }}$');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
