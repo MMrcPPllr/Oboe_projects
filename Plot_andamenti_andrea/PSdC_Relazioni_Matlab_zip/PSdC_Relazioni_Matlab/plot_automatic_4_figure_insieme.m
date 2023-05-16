@@ -62,18 +62,22 @@ disp('caso 19: Non risolvibile ');
 fprintf('\n \n COMMENTI post processing: \n')
 fprintf('caso 1,2 e 3: è sensato... a parità di Q, la risposta dovrebbe essere\n tanto più aggressiva quanto più aumenta R, \n --> quindi minimizzo la u ma lo stato non lo considero molto (giusto? minimizzo il comando a discapito dello stato) --> sensato anche dai grafici   ');
 fprintf('il caso 3 si era scritto tenesse meglio la posizione verso 0--> fa meno variazione di theta in effetti');
-fprintf('');
+fprintf('\n caso 5 dovrebbe avere meno cambiamenti sullo stato --> infatti oscilla meno nella prima componente');
+fprintf('\n caso 7: alpha sembra più stabile e va a 0 con più precisione');
+fprintf('\n caso 9: che cazzo è successo lol? --> non mi aspetto questo dalla teoria (credo) --> probabilmente necessita della velocità se no non risponde in maniera pronta quando il pendolo tende a cadere ');
+fprintf('\n caso 11: anche qua fa schifo ma penso sia per lo stesso motivo di prima --> non conviene bloccare la velocità \n ma perchè oscilla cosi tanto? \n mi aspettavo alpha_dot non cosi probabilmente essendo la derivata di alpha (in posizione non ho limiti) oscilla e ho valori alti');
+fprintf('\n  caso 13 dovrebbe essere un cheap control --> bisognerebbe vedere la u di comando se satura per me');
+fprintf('\n caso 14 e 15 --> fanno abbastanza cagare --> qua non capisco (con la 16 e 17 che vuole che diciamo sinceramente)--> non capisco bene neppure l andamento della 15');
+fprintf('\n caso 18 : bho sembra che faccia quel che vuole... neacnhe theta va --> è stato pesato troppo poco? --> la velocita essendo libera è discontinua');
 
-
-
-
+fprintf('\n');
 %% Automatizzazione per il plot
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Per modificare colonne e casi scendi su ogni plot 
 %%%
-% Da modificare: 2 di default
+% Da modificare: 2 di default ( valori possibili 2,3,4)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-numero_di_casi_da_confrontare = 2;%
+numero_di_casi_da_confrontare = 3;%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 
@@ -110,8 +114,13 @@ limiti_grafico_4 = 1; %1 per attivare
 limite_x_4 = [4.5 6];
 %limite_y_4 = [-80 20];
 limite_y_4 = 'tight';
+
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Inizio plot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 % Dimensione immagini e unione in 4 figure
 figure(10)
@@ -150,33 +159,61 @@ caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_valu
 plot(caso_n_time,caso_n_signal,...
     'LineWidth', 1.5);
 
-switch numero_di_casi_da_confrontare 
-    case 2
-        set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
-        xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22)
-        ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
-        legend(graph_theta_n, graph_theta_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
-    case 3 
-
-        hold on;
-        %%%%%%%%%%%%%%%%%%%%%%%
-        caso_n          = '3';%
-        signal_n_column = '1';%
-        %%%%%%%%%%%%%%%%%%%%%%%
-        fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column));  
-        graph_theta_n_2 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
-
-        caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
-        caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
-        plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
-        set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
-        xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22)
-        ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
-        legend(graph_theta_n, graph_theta_n_1,graph_theta_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
-
-    otherwise
-        error('Gatu sbaglià cojon');
-end
+            switch numero_di_casi_da_confrontare 
+                case 2
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22)
+                    ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_theta_n, graph_theta_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
+                case 3 
+            
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '3';%
+                    signal_n_column = '1';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column));  
+                    graph_theta_n_2 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22)
+                    ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_theta_n, graph_theta_n_1,graph_theta_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
+                case 4 
+            
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '16';%
+                    signal_n_column = '1';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column));  
+                    graph_theta_n_2 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '17';%
+                    signal_n_column = '1';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column));  
+                    graph_theta_n_3 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22)
+                    ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_theta_n, graph_theta_n_1,graph_theta_n_2,graph_theta_n_3,'interpreter','latex','FontSize',22, 'Location','southwest')
+                otherwise
+                    error('Gatu sbaglià cojon');
+            end
 
 if(limiti_grafico_1 == 1)    
     xlim(limite_x_1)  
@@ -220,33 +257,61 @@ caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_valu
 plot(caso_n_time,caso_n_signal,...
     'LineWidth', 1.5);
 
-switch numero_di_casi_da_confrontare 
-    case 2
-        set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
-        xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
-        ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
-        legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
-    case 3 
-
-        hold on;
-        %%%%%%%%%%%%%%%%%%%%%%%
-        caso_n          = '3';%
-        signal_n_column = '2';%
-        %%%%%%%%%%%%%%%%%%%%%%%
-        fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
-        graph_alpha_n_2 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
-
-        caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
-        caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
-        plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
-        set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
-        xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
-        ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
-        legend(graph_alpha_n, graph_alpha_n_1,graph_alpha_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
-
-    otherwise
-        error('Gatu sbaglià cojon');
-end
+            switch numero_di_casi_da_confrontare 
+                case 2
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
+                    ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
+                case 3 
+            
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '3';%
+                    signal_n_column = '2';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+                    graph_alpha_n_2 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
+                    ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_alpha_n, graph_alpha_n_1,graph_alpha_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
+                 case 4 
+            
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '16';%
+                    signal_n_column = '2';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+                    graph_alpha_n_2 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '17';%
+                    signal_n_column = '2';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+                    graph_alpha_n_3 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
+                    ylabel(graph_alpha_beta,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_alpha_n, graph_alpha_n_1,graph_alpha_n_2,graph_alpha_n_3,'interpreter','latex','FontSize',22, 'Location','southwest')
+            
+                otherwise
+                    error('Gatu sbaglià cojon');
+            end
 
 if(limiti_grafico_2 == 1)    
     xlim(limite_x_2)  
@@ -289,33 +354,61 @@ caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_valu
 
 plot(caso_n_time,caso_n_signal,...
     'LineWidth', 1.5);
-switch numero_di_casi_da_confrontare 
-    case 2
-        set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
-        xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
-        ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
-        legend(graph_theta_dot_n,graph_theta_dot_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
-    case 3 
-
-        hold on;
-        %%%%%%%%%%%%%%%%%%%%%%%
-        caso_n          = '3';%
-        signal_n_column = '3';%
-        %%%%%%%%%%%%%%%%%%%%%%%
-        fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
-        graph_theta_dot_n_2 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
-
-        caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
-        caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
-        plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
-        set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
-        xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
-        ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
-        legend(graph_theta_dot_n,graph_theta_dot_n_1,graph_theta_dot_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
-
-    otherwise
-        error('Gatu sbaglià cojon');
-end
+            switch numero_di_casi_da_confrontare 
+                case 2
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
+                    ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_theta_dot_n,graph_theta_dot_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
+                case 3 
+            
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '3';%
+                    signal_n_column = '3';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+                    graph_theta_dot_n_2 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
+                    ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_theta_dot_n,graph_theta_dot_n_1,graph_theta_dot_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
+                case 4 
+            
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '16';%
+                    signal_n_column = '3';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+                    graph_theta_dot_n_2 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '17';%
+                    signal_n_column = '3';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+                    graph_theta_dot_n_3 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
+                    ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_theta_dot_n,graph_theta_dot_n_1,graph_theta_dot_n_2,graph_theta_dot_n_3,'interpreter','latex','FontSize',22, 'Location','southwest')
+            
+                otherwise
+                    error('Gatu sbaglià cojon');
+            end
 
 if(limiti_grafico_3 == 1)    
     xlim(limite_x_3)  
@@ -359,33 +452,61 @@ caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_valu
 plot(caso_n_time,caso_n_signal,...
     'LineWidth', 1.5);
 
-switch numero_di_casi_da_confrontare 
-    case 2
-        set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
-        xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
-        ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
-        legend(graph_alpha_dot_n,graph_alpha_dot_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
-    case 3 
-
-        hold on;
-        %%%%%%%%%%%%%%%%%%%%%%%
-        caso_n          = '3';%
-        signal_n_column = '4';%
-        %%%%%%%%%%%%%%%%%%%%%%%
-        fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
-        graph_alpha_dot_n_2 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
-
-        caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
-        caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
-        plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
-        set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
-        xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
-        ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
-        legend(graph_alpha_dot_n,graph_alpha_dot_n_1,graph_alpha_dot_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
-
-    otherwise
-        error('Gatu sbaglià cojon');
-end
+            switch numero_di_casi_da_confrontare 
+                case 2
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
+                    ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_alpha_dot_n,graph_alpha_dot_n_1,'interpreter','latex','FontSize',22, 'Location','southwest')
+                case 3 
+            
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '3';%
+                    signal_n_column = '4';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+                    graph_alpha_dot_n_2 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
+                    ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_alpha_dot_n,graph_alpha_dot_n_1,graph_alpha_dot_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
+                case 4 
+            
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '16';%
+                    signal_n_column = '4';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+                    graph_alpha_dot_n_2 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    hold on;
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = '17';%
+                    signal_n_column = '4';%
+                    %%%%%%%%%%%%%%%%%%%%%%%
+                    fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
+                    graph_alpha_dot_n_3 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
+            
+                    caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+                    plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
+                    set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
+                    xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
+                    ylabel(graph_alpha_beta_dot,'Interpreter',"latex",'FontSize',22) 
+                    legend(graph_alpha_dot_n,graph_alpha_dot_n_1,graph_alpha_dot_n_2,graph_alpha_dot_n_3,'interpreter','latex','FontSize',22, 'Location','southwest')
+            
+                otherwise
+                    error('Gatu sbaglià cojon');
+            end
 
 if(limiti_grafico_4 == 1)    
     xlim(limite_x_4)  
@@ -397,6 +518,7 @@ end
 grid on;
 
 title("Stima: $z$",'Interpreter','latex', 'FontSize', 22)
+fprintf('\n');
 
 
 
@@ -407,9 +529,7 @@ title("Stima: $z$",'Interpreter','latex', 'FontSize', 22)
 
 
 
-
-
-
+%% Backup inutile
 %graph_legend_caso_n   = '1';
 %graph_legend_caso_n_1 = '2';
 %graph_theta_n = strcat('${{\theta}_{caso\,', graph_legend_caso_n,'}}$');
