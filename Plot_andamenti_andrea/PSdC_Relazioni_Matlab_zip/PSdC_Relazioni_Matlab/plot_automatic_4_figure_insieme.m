@@ -318,7 +318,7 @@ legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Loca
                     graph_alpha_n_1 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
                     
                     caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
-                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*1
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
                     
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
@@ -347,7 +347,7 @@ legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Loca
                     graph_alpha_n_1 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
                     
                     caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
-                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*1
+                    caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
                     
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
