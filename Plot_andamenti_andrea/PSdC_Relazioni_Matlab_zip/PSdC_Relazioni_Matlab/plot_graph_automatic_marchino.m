@@ -94,6 +94,16 @@ plot(caso_n_time,caso_n_signal,...
     'LineWidth', 3);
 
 
+caso_n          = '3';
+signal_n_column = '1';
+caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+
+plot(caso_n_time,caso_n_signal,...
+    'LineWidth', 3);
+
+
+
 set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
 
 xlabel("$t$ "+graph_time,'Interpreter',"latex",'FontSize',22) 
@@ -170,6 +180,16 @@ caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_valu
 
 plot(caso_n_time,caso_n_signal,...
     'LineWidth', 3);
+
+
+caso_n          = '3';
+signal_n_column = '3';
+caso_n_time     = eval(strcat(caso, caso_n,plot_simulation,plot_time));
+caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
+
+plot(caso_n_time,caso_n_signal,...
+    'LineWidth', 3);
+
 
 
 set(gca,'TickLabelInterpreter',"latex",'FontSize',22)

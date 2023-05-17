@@ -1,15 +1,23 @@
-% % % % % % % Jr = 5.7e-5;
-% % % % % % % Jp = 3.3e-5;
-% % % % % % % % Jr = 5.6e-5;
-% % % % % % % % Jp = 3.3e-5;
-% % % % % % % 
-% % % % % % % 
-% % % % % % % 
-% % % % % % % lr = r;
-% % % % % % % lp = 0.5*Lp;
+Jr = 5.7e-5;
+Jp = 3.3e-5;
+% Jr = 5.6e-5;
+% Jp = 3.3e-5;
+
+lr = 0.085;
+Lp = 0.129;
+lp = 0.5*Lp;
+
+mp = 0.024;
+
+g = 9.81;
+bp = 5e-5;
+br = 1e-3;
+
+km = 0.042;
+Rm = 8.4;
 
 %%
-syms Jr Jp lr lp br bp g mp km Rm
+%syms Jr Jp lr lp br bp g mp km Rm
 
 M = [Jr + mp*lr^2 -mp*lr*lp;
     -mp*lr*lp Jp+mp*lp^2];
@@ -38,8 +46,11 @@ B = B(:,1);
 
 
 
-B = km * B / Rm;
+%B = km * B / Rm;
+%A(3,3) = A(3,3) - km*km/Rm*B(3);
+%A(4,3) = A(4,3) - km*km/Rm*B(4);
+
 A(3,3) = A(3,3) - km*km/Rm*B(3);
 A(4,3) = A(4,3) - km*km/Rm*B(4);
-
+B = km * B / Rm;
 
