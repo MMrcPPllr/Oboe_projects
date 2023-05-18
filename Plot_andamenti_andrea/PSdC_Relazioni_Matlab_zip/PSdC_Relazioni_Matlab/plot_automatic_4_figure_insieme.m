@@ -95,8 +95,8 @@ numero_di_casi_da_confrontare = 2;%%%
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-caso_i_1 = '13';
-caso_i_2 = '14';
+caso_i_1 = '16';
+caso_i_2 = '17';
 caso_i_3 = '5';
 caso_i_4 = '16';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,22 +119,22 @@ graph_time  = '[s]';
 
 %%
 % Limiti asse x e y
-limiti_grafico_1 = 1; %1 per attivare
+limiti_grafico_1 = 0; %1 per attivare
 limite_x_1 = [4.5 6];
 %limite_y_1 = [-80 20];
 limite_y_1 = 'tight';
 
-limiti_grafico_2 = 1; %1 per attivare
+limiti_grafico_2 = 0; %1 per attivare
 limite_x_2 = [4.5 6];
 %limite_y_2 = [-80 20];
 limite_y_2 = 'tight';
 
-limiti_grafico_3 = 1; %1 per attivare
+limiti_grafico_3 = 0; %1 per attivare
 limite_x_3 = [4.5 6];
 %limite_y_3 = [-80 20];
 limite_y_3 = 'tight'; 
 
-limiti_grafico_4 = 1; %1 per attivare
+limiti_grafico_4 = 0; %1 per attivare
 limite_x_4 = [4.5 6];
 %limite_y_4 = [-80 20];
 limite_y_4 = 'tight';

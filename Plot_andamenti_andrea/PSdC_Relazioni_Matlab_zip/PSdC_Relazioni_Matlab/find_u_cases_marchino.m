@@ -24,3 +24,13 @@ stato_caso5 =  caso5.simulazione_out.signals.values;
 stato_caso5(:,5) = [];
 stato_caso5 = stato_caso5';
 u_caso5 = caso5.K*stato_caso5;
+
+stato_caso16 =  caso16.simulazione_out.signals.values;
+stato_caso16(:,5) = [];
+stato_caso16 = stato_caso16';
+u_caso16 = caso16.K*stato_caso16;
+
+stato_caso17 =  caso17.simulazione_out.signals.values;
+stato_caso17(:,5) = [];
+stato_caso17 = stato_caso17';
+u_caso17 = caso17.K*stato_caso5;
