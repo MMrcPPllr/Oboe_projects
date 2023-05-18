@@ -1,3 +1,4 @@
+%% ultima modifica 18_05_2023
 %% NOTA cambiare riga 70 ----> 40x35 da variare se schermo piccolo!!!
 %% load file
 clear variables
@@ -81,13 +82,28 @@ fprintf('\n');
 % 4 --> caso 14 15 16 e 17
 % 2 --> tutti gli altri casi --> per questo il case 2 è non allineato cosi
 % poi si va bene a scendere e cambiare
+
+%%%%%%%%%%%%%%%%%
+% Da modificare %
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+numero_di_casi_da_confrontare = 2;%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-numero_di_casi_da_confrontare = 3;%%%
+caso_i_1 = '13';
+caso_i_2 = '14';
+caso_i_3 = '5';
+caso_i_4 = '16';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%
+%%%%
+
+
 
 % Da non modificare
 caso      = 'caso';
@@ -140,10 +156,10 @@ nexttile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 % 1
-%%%%%%%%%%%%%%%%%%%%%%%
-caso_n          = '1';%
-signal_n_column = '1';%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+caso_n       = caso_i_1;%
+signal_n_column = '1';  %
+%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column)); 
 graph_theta_n = strcat('${{\theta}_{caso\,', caso_n,'}}$');
 
@@ -162,10 +178,10 @@ plot(caso_n_time,caso_n_signal,...
                 
                 case 2
 hold on;
-%%%%%%%%%%%%%%%%%%%%%%%
-caso_n          = '2';%
-signal_n_column = '1';%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+caso_n          =  caso_i_2;%
+signal_n_column = '1';      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column)); 
 graph_theta_n_1 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
 
@@ -181,10 +197,10 @@ legend(graph_theta_n, graph_theta_n_1,'interpreter','latex','FontSize',22, 'Loca
 
                 case 3
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '2';%
-                    signal_n_column = '1';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_2; %
+                    signal_n_column = '1';      %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_theta_n_1 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
                     
@@ -194,10 +210,10 @@ legend(graph_theta_n, graph_theta_n_1,'interpreter','latex','FontSize',22, 'Loca
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '3';%
-                    signal_n_column = '1';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_3;%
+                    signal_n_column = '1';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column));  
                     graph_theta_n_2 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
             
@@ -210,10 +226,10 @@ legend(graph_theta_n, graph_theta_n_1,'interpreter','latex','FontSize',22, 'Loca
                     legend(graph_theta_n, graph_theta_n_1,graph_theta_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
                 case 4 
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '2';%
-                    signal_n_column = '1';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_2;%
+                    signal_n_column = '1';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_theta_n_1 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
                     
@@ -223,10 +239,10 @@ legend(graph_theta_n, graph_theta_n_1,'interpreter','latex','FontSize',22, 'Loca
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '16';%
-                    signal_n_column = '1';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          =  caso_i_3;%
+                    signal_n_column = '1';      %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column));  
                     graph_theta_n_2 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
             
@@ -235,10 +251,10 @@ legend(graph_theta_n, graph_theta_n_1,'interpreter','latex','FontSize',22, 'Loca
                     plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
                     
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '17';%
-                    signal_n_column = '1';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_4;%
+                    signal_n_column = '1';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.1 caso  ',caso_n, ' colonna  ', signal_n_column));  
                     graph_theta_n_3 = strcat('${{\theta}_{caso\,', caso_n,'}}$');
             
@@ -268,10 +284,10 @@ nexttile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 % 2
-%%%%%%%%%%%%%%%%%%%%%%%
-caso_n          = '1';%
-signal_n_column = '2';%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+caso_n          =caso_i_1;%
+signal_n_column = '2';    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
 graph_alpha_n = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
 
@@ -290,10 +306,10 @@ plot(caso_n_time,caso_n_signal,...
 
                 case 2
 hold on;
-%%%%%%%%%%%%%%%%%%%%%%%
-caso_n          = '2';%
-signal_n_column = '2';%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+caso_n          =  caso_i_2;%
+signal_n_column = '2';      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
 graph_alpha_n_1 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
 
@@ -310,10 +326,10 @@ legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Loca
                 
                 case 3 
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '2';%
-                    signal_n_column = '2';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          =  caso_i_2;%
+                    signal_n_column = '2';      %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_n_1 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
                     
@@ -323,10 +339,10 @@ legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Loca
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '3';%
-                    signal_n_column = '2';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_3;%
+                    signal_n_column = '2';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_n_2 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
             
@@ -339,10 +355,10 @@ legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Loca
                     legend(graph_alpha_n, graph_alpha_n_1,graph_alpha_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
                  case 4 
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '2';%
-                    signal_n_column = '2';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          =  caso_i_2;%
+                    signal_n_column = '2';      %    
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_n_1 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
                     
@@ -352,10 +368,10 @@ legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Loca
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '16';%
-                    signal_n_column = '2';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_3;%
+                    signal_n_column = '2';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_n_2 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
             
@@ -363,10 +379,10 @@ legend(graph_alpha_n, graph_alpha_n_1,'interpreter','latex','FontSize',22, 'Loca
                     caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
                     plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '17';%
-                    signal_n_column = '2';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_4;%
+                    signal_n_column = '2';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.2 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_n_3 = strcat('${{\alpha}_{caso\,', caso_n,'}}$');
             
@@ -397,10 +413,10 @@ nexttile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 % 3
-%%%%%%%%%%%%%%%%%%%%%%%
-caso_n          = '1';%
-signal_n_column = '3';%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+caso_n          =caso_i_1;%
+signal_n_column = '3';    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
 graph_theta_dot_n = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
 
@@ -420,10 +436,10 @@ plot(caso_n_time,caso_n_signal,...
                 case 2
 
 hold on;
-%%%%%%%%%%%%%%%%%%%%%%%
-caso_n          = '2';%
-signal_n_column = '3';%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+caso_n          =  caso_i_2;%
+signal_n_column = '3';      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
 graph_theta_dot_n_1 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
 
@@ -439,10 +455,10 @@ legend(graph_theta_dot_n,graph_theta_dot_n_1,'interpreter','latex','FontSize',22
                 
                 case 3 
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '2';%
-                    signal_n_column = '3';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          =  caso_i_2;%
+                    signal_n_column = '3';      %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_theta_dot_n_1 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
                     
@@ -452,10 +468,10 @@ legend(graph_theta_dot_n,graph_theta_dot_n_1,'interpreter','latex','FontSize',22
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '3';%
-                    signal_n_column = '3';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_3;%
+                    signal_n_column = '3';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_theta_dot_n_2 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
             
@@ -468,10 +484,10 @@ legend(graph_theta_dot_n,graph_theta_dot_n_1,'interpreter','latex','FontSize',22
                     legend(graph_theta_dot_n,graph_theta_dot_n_1,graph_theta_dot_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
                 case 4 
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '2';%
-                    signal_n_column = '3';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          =  caso_i_2;%
+                    signal_n_column = '3';      %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_theta_dot_n_1 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
                     
@@ -481,10 +497,10 @@ legend(graph_theta_dot_n,graph_theta_dot_n_1,'interpreter','latex','FontSize',22
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '16';%
-                    signal_n_column = '3';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_3;%
+                    signal_n_column = '3';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_theta_dot_n_2 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
             
@@ -492,10 +508,10 @@ legend(graph_theta_dot_n,graph_theta_dot_n_1,'interpreter','latex','FontSize',22
                     caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
                     plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '17';%
-                    signal_n_column = '3';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_4;%
+                    signal_n_column = '3';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.3 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_theta_dot_n_3 = strcat('${\dot{\theta}_{caso\,',caso_n,' }}$');
             
@@ -526,10 +542,10 @@ nexttile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 % 4
-%%%%%%%%%%%%%%%%%%%%%%%
-caso_n          = '1';%
-signal_n_column = '4';%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+caso_n          =caso_i_1;%
+signal_n_column = '4';    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
 graph_alpha_dot_n = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
 
@@ -548,10 +564,10 @@ plot(caso_n_time,caso_n_signal,...
 
                 case 2
 hold on;
-%%%%%%%%%%%%%%%%%%%%%%%
-caso_n          = '2';%
-signal_n_column = '4';%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+caso_n          =  caso_i_2;%
+signal_n_column = '4';      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
 graph_alpha_dot_n_1 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
 
@@ -567,10 +583,10 @@ legend(graph_alpha_dot_n,graph_alpha_dot_n_1,'interpreter','latex','FontSize',22
                 
                 case 3 
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '2';%
-                    signal_n_column = '4';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          =  caso_i_2;%
+                    signal_n_column = '4';      %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_dot_n_1 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
                     
@@ -580,10 +596,10 @@ legend(graph_alpha_dot_n,graph_alpha_dot_n_1,'interpreter','latex','FontSize',22
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '3';%
-                    signal_n_column = '4';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_3;%
+                    signal_n_column = '4';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_dot_n_2 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
             
@@ -596,10 +612,10 @@ legend(graph_alpha_dot_n,graph_alpha_dot_n_1,'interpreter','latex','FontSize',22
                     legend(graph_alpha_dot_n,graph_alpha_dot_n_1,graph_alpha_dot_n_2,'interpreter','latex','FontSize',22, 'Location','southwest')
                 case 4 
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '2';%
-                    signal_n_column = '4';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          =  caso_i_2;%
+                    signal_n_column = '4';      %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_dot_n_1 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
                     
@@ -609,10 +625,10 @@ legend(graph_alpha_dot_n,graph_alpha_dot_n_1,'interpreter','latex','FontSize',22
                     plot(caso_n_time,caso_n_signal,...
                     'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '16';%
-                    signal_n_column = '4';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_3;%
+                    signal_n_column = '4';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_dot_n_2 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
             
@@ -620,10 +636,10 @@ legend(graph_alpha_dot_n,graph_alpha_dot_n_1,'interpreter','latex','FontSize',22
                     caso_n_signal   = eval(strcat(caso, caso_n,plot_simulation,plot_signal,plot_values,'(:,' ,signal_n_column,')'))*180/pi;
                     plot(caso_n_time,caso_n_signal,'LineWidth', 1.5);
                     hold on;
-                    %%%%%%%%%%%%%%%%%%%%%%%
-                    caso_n          = '17';%
-                    signal_n_column = '4';%
-                    %%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    caso_n          = caso_i_4;%
+                    signal_n_column = '4';     %
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     fprintf(strcat('\n Fig.4 caso  ',caso_n, ' colonna  ', signal_n_column)); 
                     graph_alpha_dot_n_3 = strcat('${\dot{\alpha}_{caso\,',caso_n,' }}$');
             
