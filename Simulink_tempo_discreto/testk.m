@@ -1,17 +1,12 @@
 
-%q = 1;
-
-
- Q1 = diag([10,5,.1,.5]);
-
-%Q1 = diag([.1,.1,1,10]);
-R1 = 1;
-
-
-K = lqr(A,B,Q1,R1);
-
+%caso5
+Q1 = diag([100,1,1,1]);
+R1 = 2;
 
 %%sistema discreto...
 sys = ss(A,B,C,D)
 sysd = c2d(sys, 0.002)
+
+
+%attenzione usare A e B DEL SISTEMA DISCRETO!
 dlqr(A,B,Q1,R1)     %---> basta solo questo???? WAAAT??
