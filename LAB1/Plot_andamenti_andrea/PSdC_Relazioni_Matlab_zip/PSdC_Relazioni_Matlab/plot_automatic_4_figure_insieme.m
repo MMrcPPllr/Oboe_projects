@@ -1,8 +1,8 @@
 %% ultima modifica 18_05_2023
 %% NOTA cambiare riga 70 ----> 40x35 da variare se schermo piccolo!!!
 %% load file
-clear variables
-clc
+%clear variables
+%clc
 %%%
 %%%
 %%  NB
@@ -95,8 +95,8 @@ numero_di_casi_da_confrontare = 2;%%%
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-caso_i_1 = '16';
-caso_i_2 = '17';
+caso_i_1 = '200';
+caso_i_2 = '200';
 caso_i_3 = '5';
 caso_i_4 = '16';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

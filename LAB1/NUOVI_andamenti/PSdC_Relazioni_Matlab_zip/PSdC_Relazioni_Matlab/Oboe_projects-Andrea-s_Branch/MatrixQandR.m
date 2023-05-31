@@ -82,7 +82,7 @@ switch condition
 K = lqr(A,B,Q1,R1);
 autovalori = eig(A-B*K);
 %%
-% sys = ss(A, B, C, D);
-% sysd = c2d(sys, 0.002);
-% K = dlqr(sysd.A,sysd.B,Q1,R1);
-% autovalori = eig(sysd.A-sysd.B*K);
+sys = ss(A, B, C, D);
+sysd = c2d(sys, 0.002);
+K = dlqr(sysd.A,sysd.B,Q1,R1);
+autovalori = eig(sysd.A-sysd.B*K);
