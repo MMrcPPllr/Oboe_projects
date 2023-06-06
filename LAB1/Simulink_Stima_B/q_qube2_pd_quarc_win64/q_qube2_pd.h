@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_pd".
  *
- * Model version              : 4.6
+ * Model version              : 4.8
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Sat May 13 14:46:55 2023
+ * C source code generated on : Sun Jun  4 21:22:23 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -395,11 +395,11 @@
 #endif
 
 #ifndef rtmGetPerTaskSampleHits
-#define rtmGetPerTaskSampleHits(rtm)   ()
+#define rtmGetPerTaskSampleHits(rtm)   ((rtm)->Timing.RateInteraction)
 #endif
 
 #ifndef rtmSetPerTaskSampleHits
-#define rtmSetPerTaskSampleHits(rtm, val) ()
+#define rtmSetPerTaskSampleHits(rtm, val) ((rtm)->Timing.RateInteraction = (val))
 #endif
 
 #ifndef rtmGetPerTaskSampleHitsArray
@@ -870,21 +870,22 @@
 /* Block signals (default storage) */
 typedef struct {
   real_T HILReadEncoderTimebase;       /* '<Root>/HIL Read Encoder Timebase' */
-  real_T Step;                         /* '<Root>/Step' */
+  real_T RateTransition;               /* '<Root>/Rate Transition' */
   real_T Sum1;                         /* '<Root>/Sum1' */
   real_T u0VLimit;                     /* '<Root>/+//- 10V Limit' */
   real_T Countstorad;                  /* '<Root>/Counts to rad' */
   real_T DerivativeFilter;             /* '<Root>/Derivative Filter' */
   real_T HILReadAnalog;                /* '<Root>/HIL Read Analog' */
   real_T Gain;                         /* '<Root>/Gain' */
-  real_T TmpSignalConversionAtToWorkspac[2];
-  real_T RateTransition;               /* '<Root>/Rate Transition' */
+  real_T TmpSignalConversionAtToWorkspac[3];
+  real_T Step;                         /* '<Root>/Step' */
   real_T y;                            /* '<Root>/MATLAB Function' */
 } B_q_qube2_pd_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
   real_T HILInitialize_FilterFrequency[2];/* '<Root>/HIL Initialize' */
+  real_T RateTransition_Buffer0;       /* '<Root>/Rate Transition' */
   real_T HILReadAnalog_Buffer;         /* '<Root>/HIL Read Analog' */
   real_T u;                            /* '<Root>/MATLAB Function' */
   t_card HILInitialize_Card;           /* '<Root>/HIL Initialize' */
@@ -1003,15 +1004,9 @@ struct P_q_qube2_pd_T_ {
   real_T HILInitialize_OOWatchdog[3];  /* Expression: watchdog_other_outputs
                                         * Referenced by: '<Root>/HIL Initialize'
                                         */
-  real_T Step_Time;                    /* Expression: 3
-                                        * Referenced by: '<Root>/Step'
-                                        */
-  real_T Step_Y0;                      /* Expression: 2
-                                        * Referenced by: '<Root>/Step'
-                                        */
-  real_T Step_YFinal;                  /* Expression: 4
-                                        * Referenced by: '<Root>/Step'
-                                        */
+  real_T RateTransition_InitialCondition;/* Expression: 0
+                                          * Referenced by: '<Root>/Rate Transition'
+                                          */
   real_T u0VLimit_UpperSat;            /* Expression: 10
                                         * Referenced by: '<Root>/+//- 10V Limit'
                                         */
@@ -1032,6 +1027,15 @@ struct P_q_qube2_pd_T_ {
                                         */
   real_T Gain_Gain;                    /* Expression: 0.042
                                         * Referenced by: '<Root>/Gain'
+                                        */
+  real_T Step_Time;                    /* Expression: 3
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T Step_Y0;                      /* Expression: 2
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T Step_YFinal;                  /* Expression: 4
+                                        * Referenced by: '<Root>/Step'
                                         */
   int32_T HILInitialize_CKChannels;
                                  /* Computed Parameter: HILInitialize_CKChannels
@@ -1291,6 +1295,10 @@ struct tag_RTM_q_qube2_pd_T {
     struct {
       uint16_T TID[3];
     } TaskCounters;
+
+    struct {
+      boolean_T TID1_2;
+    } RateInteraction;
 
     time_T tStart;
     time_T tFinal;

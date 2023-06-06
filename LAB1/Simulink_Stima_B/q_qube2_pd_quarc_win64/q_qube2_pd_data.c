@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_pd".
  *
- * Model version              : 4.6
+ * Model version              : 4.8
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Sat May 13 14:46:55 2023
+ * C source code generated on : Sun Jun  4 21:22:23 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -103,20 +103,10 @@ P_q_qube2_pd_T q_qube2_pd_P = {
    */
   { 0.0, 0.0, 1.0 },
 
-  /* Expression: 3
-   * Referenced by: '<Root>/Step'
+  /* Expression: 0
+   * Referenced by: '<Root>/Rate Transition'
    */
-  3.0,
-
-  /* Expression: 2
-   * Referenced by: '<Root>/Step'
-   */
-  2.0,
-
-  /* Expression: 4
-   * Referenced by: '<Root>/Step'
-   */
-  4.0,
+  0.0,
 
   /* Expression: 10
    * Referenced by: '<Root>/+//- 10V Limit'
@@ -152,6 +142,21 @@ P_q_qube2_pd_T q_qube2_pd_P = {
    * Referenced by: '<Root>/Gain'
    */
   0.042,
+
+  /* Expression: 3
+   * Referenced by: '<Root>/Step'
+   */
+  3.0,
+
+  /* Expression: 2
+   * Referenced by: '<Root>/Step'
+   */
+  2.0,
+
+  /* Expression: 4
+   * Referenced by: '<Root>/Step'
+   */
+  4.0,
 
   /* Computed Parameter: HILInitialize_CKChannels
    * Referenced by: '<Root>/HIL Initialize'

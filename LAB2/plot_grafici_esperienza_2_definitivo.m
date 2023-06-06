@@ -38,7 +38,7 @@ plot_simulation23=('.sistema_3x3_stima_niente_rampa_compensazione');    %12 dime
 plot_simulation24=('.sistema_3x3_stima_niente_rampa_no_compensazione'); %12 dimensions
 plot_simulation25=('.sistema_3x3_stima_no_bm_compensazione');           %12 dimensions
 plot_simulation26=('.sistema_3x3_stima_no_bm_no_compensazione');        %12 dimensions
-plot_simulation27=('.sistema_3x3_stima_no_bm_no_compensazione');        %12 dimensions
+plot_simulation27=('.sistema_3x3_stima_no_bm_rampa_compensazione');     %12 dimensions
 plot_simulation28=('.sistema_3x3_stima_no_bm_rampa_no_compensazione');  %12 dimensions
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,11 +54,11 @@ plot_simulation38=('.quanser_3x3_stima_nobm_rampa_no_compensazione');       %12 
 
 %% Per sim_n_4
 plot_simulation41=('.quanser_3x3_stima_niente_compensazione');              %11 dimensions
-plot_simulation42=('.quanser_3x3_stima_niente_no_compensazione');           %12 dimensions
+plot_simulation42=('.quanser_3x3_stima_niente_no_compensazione');           %12 dimensions  %%TEORIC PARAM NOMINALI -GRADINO
 plot_simulation43=('.quanser_3x3_stima_niente_rampa_compensazione');        %11 dimensions
 plot_simulation44=('.quanser_3x3_stima_niente_rampa_no_compensazione');     %12 dimensions
 plot_simulation45=('.quanser_3x3_stima_nobm_compensazione');                %11 dimensions
-plot_simulation46=('.quanser_3x3_stima_nobm_no_compensazione');             %12 dimensions
+plot_simulation46=('.quanser_3x3_stima_nobm_no_compensazione');             %12 dimensions  %%TEORIC PARAM NOMINALI -GRADINO
 plot_simulation47=('.quanser_3x3_stima_nobm_rampa_compensazione');          %11 dimensions     
 plot_simulation48=('.quanser_3x3_stima_nobm_rampa_no_compensazione');       %12 dimensions 
 
@@ -74,37 +74,41 @@ plot_simulation51=('.quanser_catena_aperta'); % 12 dimensions
 casi_da_confrontare = 2;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mettere i nomi di ciò che importi sopra  %
-caso_n_1    = 'sim_n_1';                      
-caso_n_2    = 'sim_n_1';  
-caso_n_3    = 'sim_n_3'; 
-caso_n_4    = 'sim_n_4'; 
+caso_n_1    = 'sim_n_2';                      
+caso_n_2    = 'sim_n_2';  
+caso_n_3    = 'sim_n_2'; 
+caso_n_4    = 'sim_n_2'; 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mettere il numero di quale si vuole delle simululation sopra  
 % Questi sono l'equivalente dei casi ma sono vincolati dal sim_n che hai
-% scelto sopra 
-plot_simulation_n_1_num   = '2';                                    
-plot_simulation_n_2_num   = '3';    
-plot_simulation_n_3_num   = '2'; 
-plot_simulation_n_4_num   = '42'; 
+% scelto sopra
+plot_simulation_n_1_num   = '23';                                    
+plot_simulation_n_2_num   = '23';    
+plot_simulation_n_3_num   = '27'; 
+plot_simulation_n_4_num   = '27'; 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Colonne da cambiare      
-graph_fig_1_caso_i_1_column = '1';
-graph_fig_1_caso_i_2_column = '5';
-graph_fig_2_caso_i_1_column = '2';
-graph_fig_2_caso_i_2_column = '6';
-graph_fig_3_caso_i_1_column = '11';
-graph_fig_3_caso_i_2_column = '11';
-graph_fig_4_caso_i_1_column = '8';
-graph_fig_4_caso_i_2_column = '9';
-%%%
-graph_fig_1_caso_i_3_column = '1';
-graph_fig_1_caso_i_4_column = '1';
-graph_fig_2_caso_i_3_column = '2';
-graph_fig_2_caso_i_4_column = '2';
-graph_fig_3_caso_i_3_column = '3';
-graph_fig_3_caso_i_4_column = '3';
-graph_fig_4_caso_i_3_column = '4';
-graph_fig_4_caso_i_4_column = '4';
+graph_fig_1_caso_i_1_column = '5';
+graph_fig_1_caso_i_2_column = '8';
+graph_fig_1_caso_i_3_column = '5';
+graph_fig_1_caso_i_4_column = '8';
+%%%%
+graph_fig_2_caso_i_1_column = '11';
+graph_fig_2_caso_i_2_column = '11';
+graph_fig_2_caso_i_3_column = '6';
+graph_fig_2_caso_i_4_column = '8';
+%%%%
+graph_fig_3_caso_i_1_column = '5';
+graph_fig_3_caso_i_2_column = '5';
+graph_fig_3_caso_i_3_column = '5';
+graph_fig_3_caso_i_4_column = '9';
+%%%%
+graph_fig_4_caso_i_1_column = '6';
+graph_fig_4_caso_i_2_column = '6';
+graph_fig_4_caso_i_3_column = '6';
+graph_fig_4_caso_i_4_column = '12';
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 fig_1_x_y_lim = 'si'; % metti 'si' per attivare 'no' per disattivare
@@ -114,10 +118,10 @@ fig_2_x_y_lim = 'si';  % metti 'si' per attivare 'no' per disattivare
 xlim_fig_2 = [0 6];
 ylim_fig_2 = 'padded';
 fig_3_x_y_lim = 'si';  % metti 'si' per attivare 'no' per disattivare
-xlim_fig_3 = [0 6];
+xlim_fig_3 = [2.5 3.5];
 ylim_fig_3 = 'padded';
 fig_4_x_y_lim = 'si';  % metti 'si' per attivare 'no' per disattivare
-xlim_fig_4 = [0 6];
+xlim_fig_4 = [2.5 3.5];
 ylim_fig_4 = 'padded';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,7 +185,7 @@ graph_fig_4_caso_i_4_legend = strcat('$\theta_{simulato}$');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 figure(10)
-set(gcf,'Units','centimeters','Position',[6 .5 30 18],'color','white')       
+set(gcf,'Units','centimeters','Position',[6 .5 40 28],'color','white')       
 ttttttt = tiledlayout(2,2, 'TileSpacing','compact', 'Padding', 'tight');
 
 
@@ -628,7 +632,7 @@ switch casi_da_confrontare
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         caso_n_time     = eval(strcat(caso_n_3,plot_n_3, plot_time));
         caso_n_signal   = eval(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'));
-        fprintf(strcat('\n Fig.2 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
+        fprintf(strcat('\n Fig.4 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
             'LineWidth', 1.5);

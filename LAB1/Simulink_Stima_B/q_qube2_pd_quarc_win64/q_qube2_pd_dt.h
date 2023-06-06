@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_pd".
  *
- * Model version              : 4.6
+ * Model version              : 4.8
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Sat May 13 14:46:55 2023
+ * C source code generated on : Sun Jun  4 21:22:23 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -62,10 +62,10 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&q_qube2_pd_B.HILReadEncoderTimebase), 0, 0, 12 }
+  { (char_T *)(&q_qube2_pd_B.HILReadEncoderTimebase), 0, 0, 13 }
   ,
 
-  { (char_T *)(&q_qube2_pd_DW.HILInitialize_FilterFrequency[0]), 0, 0, 4 },
+  { (char_T *)(&q_qube2_pd_DW.HILInitialize_FilterFrequency[0]), 0, 0, 5 },
 
   { (char_T *)(&q_qube2_pd_DW.HILInitialize_Card), 14, 0, 1 },
 
@@ -86,7 +86,7 @@ static DataTypeTransitionTable rtBTransTable = {
 static DataTypeTransition rtPTransitions[] = {
   { (char_T *)(&q_qube2_pd_P.HILWriteAnalog_channels), 7, 0, 2 },
 
-  { (char_T *)(&q_qube2_pd_P.HILInitialize_OOTerminate), 0, 0, 30 },
+  { (char_T *)(&q_qube2_pd_P.HILInitialize_OOTerminate), 0, 0, 31 },
 
   { (char_T *)(&q_qube2_pd_P.HILInitialize_CKChannels), 6, 0, 4 },
 
