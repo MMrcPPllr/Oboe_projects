@@ -7,11 +7,20 @@ clc
 %% LOAD FILES NB -->                                                  
 %%%                                                                                                           
 %                                                                                                                                                                               
-sim_n_1                     = load('Lab_2_Data\simulazioni_prima_parte_parametri_nominali.mat');                               
-sim_n_2                     = load('Lab_2_Data\simulazioni_prima_parte_variazione_parametri.mat');           
-sim_n_3                     = load('Lab_2_Data\quanser_parametri_variazione_NEW_NEW.mat');                                 
-sim_n_4                     = load('Lab_2_Data\quanser_parametri_nominali_NEW_NEW.mat');                                
-sim_n_5                     = load('Lab_2_Data\ultimo_punto_catenaaperta.mat');                                     
+%sim_n_1                     = load('Lab_2_Data\simulazioni_prima_parte_parametri_nominali.mat');                               
+%sim_n_2                     = load('Lab_2_Data\simulazioni_prima_parte_variazione_parametri.mat');           
+%sim_n_3                     = load('Lab_2_Data\quanser_parametri_variazione_NEW_NEW.mat'); 
+%sim_n_3                     = load('Lab_2_Data\quanser_parametri_nominali_NEW.mat');
+%sim_n_4                     = load('Lab_2_Data\quanser_parametri_nominali_NEW_NEW.mat');                                
+sim_n_5                     = load('Lab_2_Data\ultimo_punto_catenaaperta.mat');             
+
+
+%sim_n_10                    = load('Lab_2_Data_MARCO\q_2x2.mat');
+%sim_n_11                    = load('Lab_2_Data_MARCO\q_3x3_modello_normale.mat');
+%sim_n_12                    = load('Lab_2_Data_MARCO\q_noBM.mat');
+%sim_n_13                    = load('Lab_2_Data_MARCO\q_niente.mat');
+sim_n_0                      = load('Lab_2_Data_MARCO\q_all.mat');
+sim_n_1                      = load('Lab_2_Data_MARCO\simulazioni.mat');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,29 +52,52 @@ plot_simulation28=('.sistema_3x3_stima_no_bm_rampa_no_compensazione');  %12 dime
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Per sim_n_3
-plot_simulation31=('.quanser_3x3_stima_niente_compensazione');              %11 dimensions
-plot_simulation32=('.quanser_3x3_stima_niente_no_compensazione');           %12 dimensions
-plot_simulation33=('.quanser_3x3_stima_niente_rampa_compensazione');        %11 dimensions
-plot_simulation34=('.quanser_3x3_stima_niente_rampa_no_compensazione');     %12 dimensions
-plot_simulation35=('.quanser_3x3_stima_nobm_compensazione');                %11 dimensions
-plot_simulation36=('.quanser_3x3_stima_nobm_no_compensazione');             %12 dimensions
-plot_simulation37=('.quanser_3x3_stima_nobm_rampa_compensazione');          %11 dimensions     
-plot_simulation38=('.quanser_3x3_stima_nobm_rampa_no_compensazione');       %12 dimensions 
+% % % %plot_simulation31=('.quanser_3x3_stima_niente_compensazione');              %11 dimensions
+% % % %plot_simulation32=('.quanser_3x3_stima_niente_no_compensazione');           %12 dimensions WRONG
+% % % %plot_simulation33=('.quanser_3x3_stima_niente_rampa_compensazione');        %11 dimensions
+% % % %plot_simulation34=('.quanser_3x3_stima_niente_rampa_no_compensazione');     %12 dimensions WRONG
+% % % %plot_simulation35=('.quanser_3x3_stima_nobm_compensazione');                %11 dimensions
+% % % %plot_simulation36=('.quanser_3x3_stima_nobm_no_compensazione');             %12 dimensions WRONG
+% % % %plot_simulation37=('.quanser_3x3_stima_nobm_rampa_compensazione');          %11 dimensions     
+% % % %plot_simulation38=('.quanser_3x3_stima_nobm_rampa_no_compensazione');       %12 dimensions WRONG
+
+% plot_simulation31 = ('.quanser_3x3_stima_compensazione');
+% plot_simulation32 = ('.quanser_3x3_stima_no_compensazione');
+% plot_simulation33 = ('.quanser_3x3_stima_rampa_compensazione');
+% plot_simulation34 = ('.quanser_3x3_stima_rampa_no_compensazione');
+
 
 %% Per sim_n_4
-plot_simulation41=('.quanser_3x3_stima_niente_compensazione');              %11 dimensions
-plot_simulation42=('.quanser_3x3_stima_niente_no_compensazione');           %12 dimensions  %%TEORIC PARAM NOMINALI -GRADINO
-plot_simulation43=('.quanser_3x3_stima_niente_rampa_compensazione');        %11 dimensions
-plot_simulation44=('.quanser_3x3_stima_niente_rampa_no_compensazione');     %12 dimensions
-plot_simulation45=('.quanser_3x3_stima_nobm_compensazione');                %11 dimensions
-plot_simulation46=('.quanser_3x3_stima_nobm_no_compensazione');             %12 dimensions  %%TEORIC PARAM NOMINALI -GRADINO
-plot_simulation47=('.quanser_3x3_stima_nobm_rampa_compensazione');          %11 dimensions     
-plot_simulation48=('.quanser_3x3_stima_nobm_rampa_no_compensazione');       %12 dimensions 
+% plot_simulation41=('.quanser_3x3_stima_niente_compensazione');              %11 dimensions
+% plot_simulation42=('.quanser_3x3_stima_niente_no_compensazione');           %12 dimensions  
+% plot_simulation43=('.quanser_3x3_stima_niente_rampa_compensazione');        %11 dimensions
+% plot_simulation44=('.quanser_3x3_stima_niente_rampa_no_compensazione');     %12 dimensions
+% plot_simulation45=('.quanser_3x3_stima_nobm_compensazione');                %11 dimensions
+% plot_simulation46=('.quanser_3x3_stima_nobm_no_compensazione');             %12 dimensions  
+% plot_simulation47=('.quanser_3x3_stima_nobm_rampa_compensazione');          %11 dimensions     
+% plot_simulation48=('.quanser_3x3_stima_nobm_rampa_no_compensazione');       %12 dimensions 
 
 %% Per sim_n_5
 plot_simulation51=('.quanser_catena_aperta'); % 12 dimensions
 
 
+plot_simulation100 = ('.q_2x2_stima_1');
+plot_simulation101 = ('.q_2x2_stima_pi_4');
+
+plot_simulation110 = ('.q_3x3_gradino_comp');
+plot_simulation111 = ('.q_3x3_gradino_no_comp');
+plot_simulation112 = ('.q_3x3_rampa_comp');
+plot_simulation113 = ('.q_3x3_rampa_no_comp');
+
+plot_simulation120 = ('.q_noBM_gradino_comp');
+plot_simulation121 = ('.q_noBM_gradino_no_comp');
+plot_simulation122 = ('.q_noBM_rampa_comp');
+plot_simulation123 = ('.q_noBM_rampa_no_comp');
+
+plot_simulation130 = ('.q_niente_gradino_comp');
+plot_simulation131 = ('.q_niente_gradino_no_comp');
+plot_simulation132 = ('.q_niente_rampa_comp');
+plot_simulation133 = ('.q_niente_rampa_no_comp');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %DA MODIFICARE                              %
@@ -74,50 +106,50 @@ plot_simulation51=('.quanser_catena_aperta'); % 12 dimensions
 casi_da_confrontare = 2;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mettere i nomi di ciò che importi sopra  %
-caso_n_1    = 'sim_n_2';                      
-caso_n_2    = 'sim_n_2';  
-caso_n_3    = 'sim_n_2'; 
-caso_n_4    = 'sim_n_2'; 
+caso_n_1    = 'sim_n_5';                      
+caso_n_2    = 'sim_n_5';  
+caso_n_3    = 'sim_n_0'; 
+caso_n_4    = 'sim_n_0'; 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mettere il numero di quale si vuole delle simululation sopra  
 % Questi sono l'equivalente dei casi ma sono vincolati dal sim_n che hai
 % scelto sopra
-plot_simulation_n_1_num   = '23';                                    
-plot_simulation_n_2_num   = '23';    
-plot_simulation_n_3_num   = '27'; 
-plot_simulation_n_4_num   = '27'; 
+plot_simulation_n_1_num   = '51';                                    
+plot_simulation_n_2_num   = '51';    
+plot_simulation_n_3_num   = '110'; 
+plot_simulation_n_4_num   = '131'; 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Colonne da cambiare      
-graph_fig_1_caso_i_1_column = '5';
-graph_fig_1_caso_i_2_column = '8';
+graph_fig_1_caso_i_1_column = '3';
+graph_fig_1_caso_i_2_column = '5';
 graph_fig_1_caso_i_3_column = '5';
-graph_fig_1_caso_i_4_column = '8';
+graph_fig_1_caso_i_4_column = '3';
 %%%%
-graph_fig_2_caso_i_1_column = '11';
-graph_fig_2_caso_i_2_column = '11';
-graph_fig_2_caso_i_3_column = '6';
-graph_fig_2_caso_i_4_column = '8';
+graph_fig_2_caso_i_1_column = '4';
+graph_fig_2_caso_i_2_column = '6';
+graph_fig_2_caso_i_3_column = '7';
+graph_fig_2_caso_i_4_column = '6';
 %%%%
-graph_fig_3_caso_i_1_column = '5';
+graph_fig_3_caso_i_1_column = '3';
 graph_fig_3_caso_i_2_column = '5';
 graph_fig_3_caso_i_3_column = '5';
-graph_fig_3_caso_i_4_column = '9';
+graph_fig_3_caso_i_4_column = '8';
 %%%%
-graph_fig_4_caso_i_1_column = '6';
+graph_fig_4_caso_i_1_column = '4';
 graph_fig_4_caso_i_2_column = '6';
 graph_fig_4_caso_i_3_column = '6';
-graph_fig_4_caso_i_4_column = '12';
+graph_fig_4_caso_i_4_column = '7';
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-fig_1_x_y_lim = 'si'; % metti 'si' per attivare 'no' per disattivare
+fig_1_x_y_lim = 'no'; % metti 'si' per attivare 'no' per disattivare
 xlim_fig_1 = [0 6];
 ylim_fig_1 = 'padded';
-fig_2_x_y_lim = 'si';  % metti 'si' per attivare 'no' per disattivare
+fig_2_x_y_lim = 'no';  % metti 'si' per attivare 'no' per disattivare
 xlim_fig_2 = [0 6];
 ylim_fig_2 = 'padded';
-fig_3_x_y_lim = 'si';  % metti 'si' per attivare 'no' per disattivare
+fig_3_x_y_lim = 'no';  % metti 'si' per attivare 'no' per disattivare
 xlim_fig_3 = [2.5 3.5];
 ylim_fig_3 = 'padded';
 fig_4_x_y_lim = 'si';  % metti 'si' per attivare 'no' per disattivare
