@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_lqr2_ptc".
  *
- * Model version              : 4.7
+ * Model version              : 4.8
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 12:05:52 2023
+ * C source code generated on : Fri Jun  9 17:01:18 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -873,7 +873,7 @@ typedef struct {
   real_T errore_inseguimento[2];       /* '<Root>/Subtract' */
   real_T comando_u;                    /* '<Root>/Gain' */
   real_T valore_x3_stima_per_conferma; /* '<Root>/Manual Switch1' */
-  real_T Subtract2;                    /* '<Root>/Subtract2' */
+  real_T comandoudopocompensazione;    /* '<Root>/Subtract2' */
   real_T Saturation1;                  /* '<Root>/Saturation1' */
   real_T Step1;                        /* '<Root>/Step1' */
   real_T Subtract1;                    /* '<Root>/Subtract1' */
@@ -1050,7 +1050,7 @@ struct P_q_qube2_oboe_lqr2_ptc_T_ {
   real_T SineWave1_Bias;               /* Expression: 0
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
-  real_T SineWave1_NumSamp;            /* Expression: 200
+  real_T SineWave1_NumSamp;            /* Expression: 100
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
   real_T SineWave1_Offset;             /* Expression: 0

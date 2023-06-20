@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_sin2".
  *
- * Model version              : 4.5
+ * Model version              : 4.6
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 11:28:44 2023
+ * C source code generated on : Fri Jun  9 15:24:42 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -163,19 +163,21 @@ void q_qube2_oboe_sin2_output(void)
   /* End of MultiPortSwitch: '<Root>/Multiport Switch' */
 
   /* Sum: '<Root>/Subtract' */
-  q_qube2_oboe_sin2_B.errore_inseguimento[0] =
+  q_qube2_oboe_sin2_B.errore_inseguimento_rif_stima[0] =
     q_qube2_oboe_sin2_B.riferimento_theta - q_qube2_oboe_sin2_B.MultiportSwitch
     [0];
-  q_qube2_oboe_sin2_B.errore_inseguimento[1] =
+  q_qube2_oboe_sin2_B.errore_inseguimento_rif_stima[1] =
     q_qube2_oboe_sin2_B.riferimento_theta_dot -
     q_qube2_oboe_sin2_B.MultiportSwitch[1];
 
   /* Gain: '<Root>/Gain' */
-  u0 = q_qube2_oboe_sin2_P.KK[0] * q_qube2_oboe_sin2_B.errore_inseguimento[0];
-  u0 += q_qube2_oboe_sin2_P.KK[1] * q_qube2_oboe_sin2_B.errore_inseguimento[1];
+  u0 = q_qube2_oboe_sin2_P.KK[0] *
+    q_qube2_oboe_sin2_B.errore_inseguimento_rif_stima[0];
+  u0 += q_qube2_oboe_sin2_P.KK[1] *
+    q_qube2_oboe_sin2_B.errore_inseguimento_rif_stima[1];
 
   /* Gain: '<Root>/Gain' */
-  q_qube2_oboe_sin2_B.comando_u = u0;
+  q_qube2_oboe_sin2_B.comando_u_primadicompensazione = u0;
   if (rtmIsMajorTimeStep(q_qube2_oboe_sin2_M)) {
     /* ManualSwitch: '<Root>/Manual Switch1' */
     if (q_qube2_oboe_sin2_P.ManualSwitch1_CurrentSetting == 1) {
@@ -194,11 +196,12 @@ void q_qube2_oboe_sin2_output(void)
   }
 
   /* Sum: '<Root>/Subtract2' */
-  q_qube2_oboe_sin2_B.Subtract2 = q_qube2_oboe_sin2_B.comando_u +
+  q_qube2_oboe_sin2_B.comado_u_dopocompensazione =
+    q_qube2_oboe_sin2_B.comando_u_primadicompensazione +
     q_qube2_oboe_sin2_B.valore_x3_stima_per_conferma;
 
   /* Saturate: '<Root>/Saturation1' */
-  u0 = q_qube2_oboe_sin2_B.Subtract2;
+  u0 = q_qube2_oboe_sin2_B.comado_u_dopocompensazione;
   u1 = q_qube2_oboe_sin2_P.Saturation1_LowerSat;
   u2 = q_qube2_oboe_sin2_P.Saturation1_UpperSat;
   if (u0 > u2) {
@@ -263,8 +266,8 @@ void q_qube2_oboe_sin2_output(void)
     }
 
     /* Sum: '<Root>/Subtract3' */
-    q_qube2_oboe_sin2_B.Subtract3 = q_qube2_oboe_sin2_B.riferimento_theta -
-      q_qube2_oboe_sin2_B.uscita;
+    q_qube2_oboe_sin2_B.errore_rif_encoder =
+      q_qube2_oboe_sin2_B.riferimento_theta - q_qube2_oboe_sin2_B.uscita;
 
     /* SignalConversion generated from: '<Root>/To Workspace' */
     q_qube2_oboe_sin2_B.TmpSignalConversionAtToWorkspac[0] =
@@ -284,13 +287,15 @@ void q_qube2_oboe_sin2_output(void)
     q_qube2_oboe_sin2_B.TmpSignalConversionAtToWorkspac[7] =
       q_qube2_oboe_sin2_B.riferimento_theta_dot;
     q_qube2_oboe_sin2_B.TmpSignalConversionAtToWorkspac[8] =
-      q_qube2_oboe_sin2_B.comando_u;
+      q_qube2_oboe_sin2_B.comando_u_primadicompensazione;
     q_qube2_oboe_sin2_B.TmpSignalConversionAtToWorkspac[9] =
-      q_qube2_oboe_sin2_B.errore_inseguimento[0];
+      q_qube2_oboe_sin2_B.comado_u_dopocompensazione;
     q_qube2_oboe_sin2_B.TmpSignalConversionAtToWorkspac[10] =
-      q_qube2_oboe_sin2_B.errore_inseguimento[1];
+      q_qube2_oboe_sin2_B.errore_inseguimento_rif_stima[0];
     q_qube2_oboe_sin2_B.TmpSignalConversionAtToWorkspac[11] =
-      q_qube2_oboe_sin2_B.valore_x3_stima_per_conferma;
+      q_qube2_oboe_sin2_B.errore_inseguimento_rif_stima[1];
+    q_qube2_oboe_sin2_B.TmpSignalConversionAtToWorkspac[12] =
+      q_qube2_oboe_sin2_B.errore_rif_encoder;
 
     /* SignalConversion generated from: '<Root>/Discrete State-Space1' */
     q_qube2_oboe_sin2_B.TmpSignalConversionAtDiscreteSt[0] =
@@ -885,10 +890,10 @@ RT_MODEL_q_qube2_oboe_sin2_T *q_qube2_oboe_sin2(void)
   q_qube2_oboe_sin2_M->Timing.stepSize1 = 0.002;
 
   /* External mode info */
-  q_qube2_oboe_sin2_M->Sizes.checksums[0] = (3038805086U);
-  q_qube2_oboe_sin2_M->Sizes.checksums[1] = (2283087972U);
-  q_qube2_oboe_sin2_M->Sizes.checksums[2] = (1953374404U);
-  q_qube2_oboe_sin2_M->Sizes.checksums[3] = (3518166121U);
+  q_qube2_oboe_sin2_M->Sizes.checksums[0] = (1170352384U);
+  q_qube2_oboe_sin2_M->Sizes.checksums[1] = (3127305450U);
+  q_qube2_oboe_sin2_M->Sizes.checksums[2] = (390268145U);
+  q_qube2_oboe_sin2_M->Sizes.checksums[3] = (2301272996U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -915,7 +920,7 @@ RT_MODEL_q_qube2_oboe_sin2_T *q_qube2_oboe_sin2(void)
 
   {
     int32_T i;
-    for (i = 0; i < 12; i++) {
+    for (i = 0; i < 13; i++) {
       q_qube2_oboe_sin2_B.TmpSignalConversionAtToWorkspac[i] = 0.0;
     }
 
@@ -929,16 +934,16 @@ RT_MODEL_q_qube2_oboe_sin2_T *q_qube2_oboe_sin2(void)
     q_qube2_oboe_sin2_B.stato_stimato_con_x3[2] = 0.0;
     q_qube2_oboe_sin2_B.MultiportSwitch[0] = 0.0;
     q_qube2_oboe_sin2_B.MultiportSwitch[1] = 0.0;
-    q_qube2_oboe_sin2_B.errore_inseguimento[0] = 0.0;
-    q_qube2_oboe_sin2_B.errore_inseguimento[1] = 0.0;
-    q_qube2_oboe_sin2_B.comando_u = 0.0;
+    q_qube2_oboe_sin2_B.errore_inseguimento_rif_stima[0] = 0.0;
+    q_qube2_oboe_sin2_B.errore_inseguimento_rif_stima[1] = 0.0;
+    q_qube2_oboe_sin2_B.comando_u_primadicompensazione = 0.0;
     q_qube2_oboe_sin2_B.valore_x3_stima_per_conferma = 0.0;
-    q_qube2_oboe_sin2_B.Subtract2 = 0.0;
+    q_qube2_oboe_sin2_B.comado_u_dopocompensazione = 0.0;
     q_qube2_oboe_sin2_B.Saturation1 = 0.0;
     q_qube2_oboe_sin2_B.Step1 = 0.0;
     q_qube2_oboe_sin2_B.Subtract1 = 0.0;
     q_qube2_oboe_sin2_B.u0VLimit = 0.0;
-    q_qube2_oboe_sin2_B.Subtract3 = 0.0;
+    q_qube2_oboe_sin2_B.errore_rif_encoder = 0.0;
     q_qube2_oboe_sin2_B.TmpSignalConversionAtDiscreteSt[0] = 0.0;
     q_qube2_oboe_sin2_B.TmpSignalConversionAtDiscreteSt[1] = 0.0;
     q_qube2_oboe_sin2_B.HILReadAnalog = 0.0;

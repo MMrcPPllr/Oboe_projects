@@ -549,7 +549,7 @@
 	  section.data(11).logicalSrcIdx = 10;
 	  section.data(11).dtTransOffset = 14;
 	
-	  ;% q_qube2_oboe_lqr2_ptc_B.Subtract2
+	  ;% q_qube2_oboe_lqr2_ptc_B.comandoudopocompensazione
 	  section.data(12).logicalSrcIdx = 11;
 	  section.data(12).dtTransOffset = 15;
 	
@@ -791,8 +791,8 @@
   ;%
 
 
-  targMap.checksum0 = 4032295415;
-  targMap.checksum1 = 1742590183;
-  targMap.checksum2 = 1965046422;
-  targMap.checksum3 = 855383600;
+  targMap.checksum0 = 2011591175;
+  targMap.checksum1 = 3127706054;
+  targMap.checksum2 = 3823538889;
+  targMap.checksum3 = 2193007595;
 

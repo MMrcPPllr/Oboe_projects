@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_sin2".
  *
- * Model version              : 4.5
+ * Model version              : 4.6
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 11:28:44 2023
+ * C source code generated on : Fri Jun  9 15:24:42 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -135,35 +135,35 @@ P_q_qube2_oboe_sin2_T q_qube2_oboe_sin2_P = {
    */
   0.0,
 
-  /* Expression: 64
+  /* Expression: 200
    * Referenced by: '<Root>/Sine Wave'
    */
-  64.0,
+  200.0,
 
   /* Expression: 0
    * Referenced by: '<Root>/Sine Wave'
    */
   0.0,
 
-  /* Expression: 1*2*pi*5
+  /* Expression: 1*2*pi*2.5
    * Referenced by: '<Root>/Sine Wave1'
    */
-  31.415926535897931,
+  15.707963267948966,
 
   /* Expression: 0
    * Referenced by: '<Root>/Sine Wave1'
    */
   0.0,
 
-  /* Expression: 64
+  /* Expression: 200
    * Referenced by: '<Root>/Sine Wave1'
    */
-  64.0,
+  200.0,
 
-  /* Expression: 16
+  /* Expression: 50
    * Referenced by: '<Root>/Sine Wave1'
    */
-  16.0,
+  50.0,
 
   /* Expression: 2
    * Referenced by: '<Root>/1- stato vero 2- pseudo misura 3- stima'

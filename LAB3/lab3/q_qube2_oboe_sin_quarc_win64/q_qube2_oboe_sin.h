@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_sin".
  *
- * Model version              : 4.9
+ * Model version              : 4.10
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 11:16:27 2023
+ * C source code generated on : Fri Jun  9 15:14:49 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -869,14 +869,14 @@ typedef struct {
   real_T TransferFcn;                  /* '<Root>/Transfer Fcn' */
   real_T stato_stimato[2];             /* '<Root>/Discrete State-Space1' */
   real_T MultiportSwitch[2];           /* '<Root>/Multiport Switch' */
-  real_T errore_inseguimento[2];       /* '<Root>/Subtract' */
+  real_T errore_riferimento_stima[2];  /* '<Root>/Subtract' */
   real_T comando_u;                    /* '<Root>/Gain' */
   real_T Saturation1;                  /* '<Root>/Saturation1' */
   real_T Step1;                        /* '<Root>/Step1' */
   real_T Subtract1;                    /* '<Root>/Subtract1' */
   real_T u0VLimit;                     /* '<Root>/+//- 10V Limit' */
-  real_T Subtract3;                    /* '<Root>/Subtract3' */
-  real_T TmpSignalConversionAtToWorkspac[10];
+  real_T errore_riferimento_uscita;    /* '<Root>/Subtract3' */
+  real_T TmpSignalConversionAtToWorkspac[11];
   real_T TmpSignalConversionAtDiscreteSt[2];
   real_T HILReadAnalog;                /* '<Root>/HIL Read Analog' */
 } B_q_qube2_oboe_sin_T;
@@ -1033,7 +1033,7 @@ struct P_q_qube2_oboe_sin_T_ {
   real_T SineWave_Offset;              /* Expression: 0
                                         * Referenced by: '<Root>/Sine Wave'
                                         */
-  real_T SineWave1_Amp;                /* Expression: 1*2*pi*5
+  real_T SineWave1_Amp;                /* Expression: 1*2*pi*8
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
   real_T SineWave1_Bias;               /* Expression: 0

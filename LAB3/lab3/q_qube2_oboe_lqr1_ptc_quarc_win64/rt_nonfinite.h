@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_lqr1_ptc".
  *
- * Model version              : 4.10
+ * Model version              : 4.12
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 12:10:30 2023
+ * C source code generated on : Fri Jun  9 16:55:06 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

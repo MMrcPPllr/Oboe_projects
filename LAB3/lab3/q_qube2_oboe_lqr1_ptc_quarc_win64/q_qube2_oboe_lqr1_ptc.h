@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_lqr1_ptc".
  *
- * Model version              : 4.10
+ * Model version              : 4.12
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 12:10:30 2023
+ * C source code generated on : Fri Jun  9 16:55:06 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -877,8 +877,8 @@ typedef struct {
   real_T Subtract1;                    /* '<Root>/Subtract1' */
   real_T u0VLimit;                     /* '<Root>/+//- 10V Limit' */
   real_T riferimento_theta;            /* '<Root>/Delay1' */
-  real_T Subtract3;                    /* '<Root>/Subtract3' */
-  real_T TmpSignalConversionAtToWorkspac[10];
+  real_T errore_rif_encoder;           /* '<Root>/Subtract3' */
+  real_T TmpSignalConversionAtToWorkspac[11];
   real_T TmpSignalConversionAtDiscreteSt[2];
   real_T HILReadAnalog;                /* '<Root>/HIL Read Analog' */
 } B_q_qube2_oboe_lqr1_ptc_T;
@@ -1041,7 +1041,7 @@ struct P_q_qube2_oboe_lqr1_ptc_T_ {
   real_T SineWave1_Bias;               /* Expression: 0
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
-  real_T SineWave1_NumSamp;            /* Expression: 200
+  real_T SineWave1_NumSamp;            /* Expression: 100
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
   real_T SineWave1_Offset;             /* Expression: 0
@@ -1092,10 +1092,10 @@ struct P_q_qube2_oboe_lqr1_ptc_T_ {
   real_T Step1_YFinal;                 /* Expression: 0
                                         * Referenced by: '<Root>/Step1'
                                         */
-  real_T u0VLimit_UpperSat;            /* Expression: 20
+  real_T u0VLimit_UpperSat;            /* Expression: 15
                                         * Referenced by: '<Root>/+//- 10V Limit'
                                         */
-  real_T u0VLimit_LowerSat;            /* Expression: -20
+  real_T u0VLimit_LowerSat;            /* Expression: -15
                                         * Referenced by: '<Root>/+//- 10V Limit'
                                         */
   real_T Delay1_InitialCondition;      /* Expression: 0.0

@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_lqr1_zptec".
  *
- * Model version              : 4.9
+ * Model version              : 4.10
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 12:22:06 2023
+ * C source code generated on : Fri Jun  9 18:11:52 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -130,10 +130,10 @@ P_q_qube2_oboe_lqr1_zptec_T q_qube2_oboe_lqr1_zptec_P = {
    */
   0.0,
 
-  /* Expression: 64
+  /* Expression: 200
    * Referenced by: '<Root>/Sine Wave2'
    */
-  64.0,
+  200.0,
 
   /* Expression: 0
    * Referenced by: '<Root>/Sine Wave2'

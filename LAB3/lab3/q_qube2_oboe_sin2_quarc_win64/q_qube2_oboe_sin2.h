@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_sin2".
  *
- * Model version              : 4.5
+ * Model version              : 4.6
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 11:28:44 2023
+ * C source code generated on : Fri Jun  9 15:24:42 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -869,16 +869,16 @@ typedef struct {
   real_T TransferFcn;                  /* '<Root>/Transfer Fcn' */
   real_T stato_stimato_con_x3[3];      /* '<Root>/Discrete State-Space1' */
   real_T MultiportSwitch[2];           /* '<Root>/Multiport Switch' */
-  real_T errore_inseguimento[2];       /* '<Root>/Subtract' */
-  real_T comando_u;                    /* '<Root>/Gain' */
+  real_T errore_inseguimento_rif_stima[2];/* '<Root>/Subtract' */
+  real_T comando_u_primadicompensazione;/* '<Root>/Gain' */
   real_T valore_x3_stima_per_conferma; /* '<Root>/Manual Switch1' */
-  real_T Subtract2;                    /* '<Root>/Subtract2' */
+  real_T comado_u_dopocompensazione;   /* '<Root>/Subtract2' */
   real_T Saturation1;                  /* '<Root>/Saturation1' */
   real_T Step1;                        /* '<Root>/Step1' */
   real_T Subtract1;                    /* '<Root>/Subtract1' */
   real_T u0VLimit;                     /* '<Root>/+//- 10V Limit' */
-  real_T Subtract3;                    /* '<Root>/Subtract3' */
-  real_T TmpSignalConversionAtToWorkspac[12];
+  real_T errore_rif_encoder;           /* '<Root>/Subtract3' */
+  real_T TmpSignalConversionAtToWorkspac[13];
   real_T TmpSignalConversionAtDiscreteSt[2];
   real_T HILReadAnalog;                /* '<Root>/HIL Read Analog' */
 } B_q_qube2_oboe_sin2_T;
@@ -1040,22 +1040,22 @@ struct P_q_qube2_oboe_sin2_T_ {
   real_T SineWave_Bias;                /* Expression: 0
                                         * Referenced by: '<Root>/Sine Wave'
                                         */
-  real_T SineWave_NumSamp;             /* Expression: 64
+  real_T SineWave_NumSamp;             /* Expression: 200
                                         * Referenced by: '<Root>/Sine Wave'
                                         */
   real_T SineWave_Offset;              /* Expression: 0
                                         * Referenced by: '<Root>/Sine Wave'
                                         */
-  real_T SineWave1_Amp;                /* Expression: 1*2*pi*5
+  real_T SineWave1_Amp;                /* Expression: 1*2*pi*2.5
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
   real_T SineWave1_Bias;               /* Expression: 0
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
-  real_T SineWave1_NumSamp;            /* Expression: 64
+  real_T SineWave1_NumSamp;            /* Expression: 200
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
-  real_T SineWave1_Offset;             /* Expression: 16
+  real_T SineWave1_Offset;             /* Expression: 50
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
   real_T ustatovero2pseudomisura3stima_V;/* Expression: 2

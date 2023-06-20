@@ -21,6 +21,8 @@ sim_n_5                     = load('Lab_2_Data\ultimo_punto_catenaaperta.mat');
 %sim_n_13                    = load('Lab_2_Data_MARCO\q_niente.mat');
 sim_n_0                      = load('Lab_2_Data_MARCO\q_all.mat');
 sim_n_1                      = load('Lab_2_Data_MARCO\simulazioni.mat');
+
+sim_n_1000                  = load('Lab_2_Data_MARCO\test_autovalori.mat');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,6 +101,8 @@ plot_simulation131 = ('.q_niente_gradino_no_comp');
 plot_simulation132 = ('.q_niente_rampa_comp');
 plot_simulation133 = ('.q_niente_rampa_no_comp');
 
+plot_simulation1000 = ('.q_test_autovalori');
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %DA MODIFICARE                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -106,54 +110,54 @@ plot_simulation133 = ('.q_niente_rampa_no_comp');
 casi_da_confrontare = 2;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mettere i nomi di ciò che importi sopra  %
-caso_n_1    = 'sim_n_5';                      
-caso_n_2    = 'sim_n_5';  
-caso_n_3    = 'sim_n_0'; 
+caso_n_1    = 'sim_n_1';                      
+caso_n_2    = 'sim_n_1';  
+caso_n_3    = 'sim_n_1'; 
 caso_n_4    = 'sim_n_0'; 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mettere il numero di quale si vuole delle simululation sopra  
 % Questi sono l'equivalente dei casi ma sono vincolati dal sim_n che hai
 % scelto sopra
-plot_simulation_n_1_num   = '51';                                    
-plot_simulation_n_2_num   = '51';    
-plot_simulation_n_3_num   = '110'; 
-plot_simulation_n_4_num   = '131'; 
+plot_simulation_n_1_num   = '8';                                    
+plot_simulation_n_2_num   = '27';    
+plot_simulation_n_3_num   = '1'; 
+plot_simulation_n_4_num   = '1'; 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Colonne da cambiare      
-graph_fig_1_caso_i_1_column = '3';
-graph_fig_1_caso_i_2_column = '5';
+graph_fig_1_caso_i_1_column = '7';
+graph_fig_1_caso_i_2_column = '7';
 graph_fig_1_caso_i_3_column = '5';
 graph_fig_1_caso_i_4_column = '3';
 %%%%
-graph_fig_2_caso_i_1_column = '4';
-graph_fig_2_caso_i_2_column = '6';
-graph_fig_2_caso_i_3_column = '7';
+graph_fig_2_caso_i_1_column = '2';
+graph_fig_2_caso_i_2_column = '4';
+graph_fig_2_caso_i_3_column = '6';
 graph_fig_2_caso_i_4_column = '6';
 %%%%
-graph_fig_3_caso_i_1_column = '3';
-graph_fig_3_caso_i_2_column = '5';
+graph_fig_3_caso_i_1_column = '1';
+graph_fig_3_caso_i_2_column = '3';
 graph_fig_3_caso_i_3_column = '5';
 graph_fig_3_caso_i_4_column = '8';
 %%%%
-graph_fig_4_caso_i_1_column = '4';
-graph_fig_4_caso_i_2_column = '6';
+graph_fig_4_caso_i_1_column = '2';
+graph_fig_4_caso_i_2_column = '4';
 graph_fig_4_caso_i_3_column = '6';
 graph_fig_4_caso_i_4_column = '7';
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-fig_1_x_y_lim = 'no'; % metti 'si' per attivare 'no' per disattivare
+fig_1_x_y_lim = 'si'; % metti 'si' per attivare 'no' per disattivare
 xlim_fig_1 = [0 6];
 ylim_fig_1 = 'padded';
-fig_2_x_y_lim = 'no';  % metti 'si' per attivare 'no' per disattivare
+fig_2_x_y_lim = 'si';  % metti 'si' per attivare 'no' per disattivare
 xlim_fig_2 = [0 6];
 ylim_fig_2 = 'padded';
-fig_3_x_y_lim = 'no';  % metti 'si' per attivare 'no' per disattivare
-xlim_fig_3 = [2.5 3.5];
+fig_3_x_y_lim = 'si';  % metti 'si' per attivare 'no' per disattivare
+xlim_fig_3 = [2.9 3.2];
 ylim_fig_3 = 'padded';
 fig_4_x_y_lim = 'si';  % metti 'si' per attivare 'no' per disattivare
-xlim_fig_4 = [2.5 3.5];
+xlim_fig_4 = [2.9 3.2];
 ylim_fig_4 = 'padded';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,40 +180,40 @@ graph_fig_3_time  = 't [s]';
 graph_fig_4_time  = 't [s]';
 %%%
 % Unità di misura asse y
-graph_fig_1_unit = '[Deg]';
-graph_fig_2_unit = '[Deg]';
-graph_fig_3_unit = '[Deg]';
-graph_fig_4_unit = '[Deg]';
+graph_fig_1_unit = '$\theta$ [Rad]';
+graph_fig_2_unit = '$\dot{\theta}$ [Rad/s]';
+graph_fig_3_unit = '$\theta$ [Rad]';
+graph_fig_4_unit = '$\dot{\theta}$ [Rad/s]';
 
 %%%
 % Titoli delle figure
-graph_fig_1_title = 'Stima: $1$';
-graph_fig_2_title = 'Stima: $2$';
-graph_fig_3_title = 'Stima: $3$';
-graph_fig_4_title = 'Stima: $4$';
+graph_fig_1_title = '';
+graph_fig_2_title = '';
+graph_fig_3_title = '';
+graph_fig_4_title = '';
 %%%
 % Figure cosa viene plottato (quali variabili
 %%%
 % Nomi delle variabili da plottare
 
-graph_fig_1_caso_i_1_legend = strcat('$\theta_{simulato}$');
-graph_fig_1_caso_i_2_legend = strcat('$\theta_{simulato}$');
-graph_fig_1_caso_i_3_legend = strcat('$\theta_{simulato}$');
+graph_fig_1_caso_i_1_legend = strcat('$\theta_{vera}$');
+graph_fig_1_caso_i_2_legend = strcat('$\theta_{pseudo}$');
+graph_fig_1_caso_i_3_legend = strcat('$\theta_{stima}$');
 graph_fig_1_caso_i_4_legend = strcat('$\theta_{simulato}$');
 
-graph_fig_2_caso_i_1_legend = strcat('$\theta_{simulato}$');
-graph_fig_2_caso_i_2_legend = strcat('$\theta_{simulato}$');
-graph_fig_2_caso_i_3_legend = strcat('$\theta_{simulato}$');
+graph_fig_2_caso_i_1_legend = strcat('$\theta_{vera}$');
+graph_fig_2_caso_i_2_legend = strcat('$\theta_{pseudo}$');
+graph_fig_2_caso_i_3_legend = strcat('$\theta_{stima}$');
 graph_fig_2_caso_i_4_legend = strcat('$\theta_{simulato}$');
 
-graph_fig_3_caso_i_1_legend = strcat('$\theta_{simulato}$');
-graph_fig_3_caso_i_2_legend = strcat('$\theta_{simulato}$');
-graph_fig_3_caso_i_3_legend = strcat('$\theta_{simulato}$');
+graph_fig_3_caso_i_1_legend = strcat('$\theta_{vera}$');
+graph_fig_3_caso_i_2_legend = strcat('$\theta_{pseudo}$');
+graph_fig_3_caso_i_3_legend = strcat('$\theta_{stima}$');
 graph_fig_3_caso_i_4_legend = strcat('$\theta_{simulato}$');
 
-graph_fig_4_caso_i_1_legend = strcat('$\theta_{simulato}$');
-graph_fig_4_caso_i_2_legend = strcat('$\theta_{simulato}$');
-graph_fig_4_caso_i_3_legend = strcat('$\theta_{simulato}$');
+graph_fig_4_caso_i_1_legend = strcat('$\theta_{vera}$');
+graph_fig_4_caso_i_2_legend = strcat('$\theta_{pseudo}$');
+graph_fig_4_caso_i_3_legend = strcat('$\theta_{stima}$');
 graph_fig_4_caso_i_4_legend = strcat('$\theta_{simulato}$');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -219,7 +223,7 @@ graph_fig_4_caso_i_4_legend = strcat('$\theta_{simulato}$');
 figure(10)
 set(gcf,'Units','centimeters','Position',[6 .5 40 28],'color','white')       
 ttttttt = tiledlayout(2,2, 'TileSpacing','compact', 'Padding', 'tight');
-
+title(ttttttt,'Confronto tra stato vero, pseudo-stato e stima','interpreter','latex','FontSize',22);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -235,7 +239,7 @@ caso_n_time     = eval(strcat(caso_n_1, plot_n_1 , plot_time));
 caso_n_signal   = eval(strcat(caso_n_1, plot_n_1 , plot_signal,plot_values,'(:,' ,signal_n_column,')'));
 fprintf(strcat('\n Fig.1 caso:    ',strcat(caso_n_1, plot_n_1 , plot_signal,plot_values,'(:,' ,signal_n_column,')')));  
 plot(caso_n_time,caso_n_signal,...
-    'LineWidth', 1.5);
+    'linewidth', 2);
 
 
 switch casi_da_confrontare 
@@ -258,7 +262,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.1 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         xlabel(graph_fig_1_time,'Interpreter',"latex",'FontSize',22) 
@@ -277,7 +281,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.1 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
         signal_n_column = graph_fig_1_caso_i_3_column;   %
@@ -287,7 +291,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.1 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         
@@ -307,7 +311,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.1 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
         signal_n_column = graph_fig_1_caso_i_3_column;   %
@@ -317,7 +321,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.1 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
@@ -328,7 +332,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.1 caso:    ',(strcat(caso_n_4,plot_n_4 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         xlabel(graph_fig_1_time,'Interpreter',"latex",'FontSize',22) 
@@ -363,7 +367,7 @@ caso_n_time     = eval(strcat(caso_n_1, plot_n_1 , plot_time));
 caso_n_signal   = eval(strcat(caso_n_1, plot_n_1 , plot_signal,plot_values,'(:,' ,signal_n_column,')'));
 fprintf(strcat('\n Fig.2 caso:    ',strcat(caso_n_1, plot_n_1 , plot_signal,plot_values,'(:,' ,signal_n_column,')')));  
 plot(caso_n_time,caso_n_signal,...
-    'LineWidth', 1.5);
+    'linewidth', 2);
 
 
 switch casi_da_confrontare 
@@ -386,7 +390,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.2 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         xlabel(graph_fig_2_time,'Interpreter',"latex",'FontSize',22) 
@@ -405,7 +409,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.2 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
         signal_n_column = graph_fig_2_caso_i_3_column;   %
@@ -415,7 +419,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.2 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         
@@ -435,7 +439,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.2 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
         signal_n_column = graph_fig_2_caso_i_3_column;   %
@@ -445,7 +449,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.2 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
@@ -456,7 +460,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.2 caso:    ',(strcat(caso_n_4,plot_n_4 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         xlabel(graph_fig_2_time,'Interpreter',"latex",'FontSize',22) 
@@ -489,7 +493,7 @@ caso_n_time     = eval(strcat(caso_n_1, plot_n_1 , plot_time));
 caso_n_signal   = eval(strcat(caso_n_1, plot_n_1 , plot_signal,plot_values,'(:,' ,signal_n_column,')'));
 fprintf(strcat('\n Fig.3 caso:    ',strcat(caso_n_1, plot_n_1 , plot_signal,plot_values,'(:,' ,signal_n_column,')')));  
 plot(caso_n_time,caso_n_signal,...
-    'LineWidth', 1.5);
+    'linewidth', 2);
 
 
 switch casi_da_confrontare 
@@ -512,7 +516,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.3 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         xlabel(graph_fig_3_time,'Interpreter',"latex",'FontSize',22) 
@@ -531,7 +535,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.3 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
         signal_n_column = graph_fig_3_caso_i_3_column;   %
@@ -541,7 +545,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.3 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         
@@ -561,7 +565,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.3 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
         signal_n_column = graph_fig_3_caso_i_3_column;   %
@@ -571,7 +575,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.3 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
@@ -582,7 +586,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.3 caso:    ',(strcat(caso_n_4,plot_n_4 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         xlabel(graph_fig_3_time,'Interpreter',"latex",'FontSize',22) 
@@ -615,7 +619,7 @@ caso_n_time     = eval(strcat(caso_n_1, plot_n_1 , plot_time));
 caso_n_signal   = eval(strcat(caso_n_1, plot_n_1 , plot_signal,plot_values,'(:,' ,signal_n_column,')'));
 fprintf(strcat('\n Fig.4 caso:    ',strcat(caso_n_1, plot_n_1 , plot_signal,plot_values,'(:,' ,signal_n_column,')')));  
 plot(caso_n_time,caso_n_signal,...
-    'LineWidth', 1.5);
+    'linewidth', 2);
 
 
 switch casi_da_confrontare 
@@ -638,7 +642,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.4 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         xlabel(graph_fig_4_time,'Interpreter',"latex",'FontSize',22) 
@@ -657,7 +661,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.4 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
         signal_n_column = graph_fig_4_caso_i_3_column;   %
@@ -667,7 +671,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.4 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         
@@ -687,7 +691,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.4 caso:    ',(strcat(caso_n_2,plot_n_2 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
         signal_n_column = graph_fig_4_caso_i_3_column;   %
@@ -697,7 +701,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.4 caso:    ',(strcat(caso_n_3,plot_n_3 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Colonna simout da plottare                     %
@@ -708,7 +712,7 @@ switch casi_da_confrontare
         fprintf(strcat('\n Fig.4 caso:    ',(strcat(caso_n_4,plot_n_4 , plot_signal,plot_values,'(:,' ,signal_n_column,')'))));
         fprintf('\n');
         plot(caso_n_time,caso_n_signal,...
-            'LineWidth', 1.5);
+            'linewidth', 2);
         hold off
         set(gca,'TickLabelInterpreter',"latex",'FontSize',22)
         xlabel(graph_fig_4_time,'Interpreter',"latex",'FontSize',22) 

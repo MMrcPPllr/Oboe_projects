@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_lqr2_ptc".
  *
- * Model version              : 4.7
+ * Model version              : 4.8
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 12:05:52 2023
+ * C source code generated on : Fri Jun  9 17:01:18 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -215,11 +215,12 @@ void q_qube2_oboe_lqr2_ptc_output(void)
   }
 
   /* Sum: '<Root>/Subtract2' */
-  q_qube2_oboe_lqr2_ptc_B.Subtract2 = q_qube2_oboe_lqr2_ptc_B.comando_u +
+  q_qube2_oboe_lqr2_ptc_B.comandoudopocompensazione =
+    q_qube2_oboe_lqr2_ptc_B.comando_u +
     q_qube2_oboe_lqr2_ptc_B.valore_x3_stima_per_conferma;
 
   /* Saturate: '<Root>/Saturation1' */
-  currentTime = q_qube2_oboe_lqr2_ptc_B.Subtract2;
+  currentTime = q_qube2_oboe_lqr2_ptc_B.comandoudopocompensazione;
   u1 = q_qube2_oboe_lqr2_ptc_P.Saturation1_LowerSat;
   u2 = q_qube2_oboe_lqr2_ptc_P.Saturation1_UpperSat;
   if (currentTime > u2) {
@@ -312,11 +313,11 @@ void q_qube2_oboe_lqr2_ptc_output(void)
     q_qube2_oboe_lqr2_ptc_B.TmpSignalConversionAtToWorkspac[8] =
       q_qube2_oboe_lqr2_ptc_B.comando_u;
     q_qube2_oboe_lqr2_ptc_B.TmpSignalConversionAtToWorkspac[9] =
-      q_qube2_oboe_lqr2_ptc_B.errore_inseguimento[0];
+      q_qube2_oboe_lqr2_ptc_B.comandoudopocompensazione;
     q_qube2_oboe_lqr2_ptc_B.TmpSignalConversionAtToWorkspac[10] =
-      q_qube2_oboe_lqr2_ptc_B.errore_inseguimento[1];
+      q_qube2_oboe_lqr2_ptc_B.errore_inseguimento[0];
     q_qube2_oboe_lqr2_ptc_B.TmpSignalConversionAtToWorkspac[11] =
-      q_qube2_oboe_lqr2_ptc_B.valore_x3_stima_per_conferma;
+      q_qube2_oboe_lqr2_ptc_B.errore_inseguimento[1];
     q_qube2_oboe_lqr2_ptc_B.TmpSignalConversionAtToWorkspac[12] =
       q_qube2_oboe_lqr2_ptc_B.errore_scope_3_rif_e_zm1;
 
@@ -930,10 +931,10 @@ RT_MODEL_q_qube2_oboe_lqr2_pt_T *q_qube2_oboe_lqr2_ptc(void)
   q_qube2_oboe_lqr2_ptc_M->Timing.stepSize1 = 0.002;
 
   /* External mode info */
-  q_qube2_oboe_lqr2_ptc_M->Sizes.checksums[0] = (4032295415U);
-  q_qube2_oboe_lqr2_ptc_M->Sizes.checksums[1] = (1742590183U);
-  q_qube2_oboe_lqr2_ptc_M->Sizes.checksums[2] = (1965046422U);
-  q_qube2_oboe_lqr2_ptc_M->Sizes.checksums[3] = (855383600U);
+  q_qube2_oboe_lqr2_ptc_M->Sizes.checksums[0] = (2011591175U);
+  q_qube2_oboe_lqr2_ptc_M->Sizes.checksums[1] = (3127706054U);
+  q_qube2_oboe_lqr2_ptc_M->Sizes.checksums[2] = (3823538889U);
+  q_qube2_oboe_lqr2_ptc_M->Sizes.checksums[3] = (2193007595U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -981,7 +982,7 @@ RT_MODEL_q_qube2_oboe_lqr2_pt_T *q_qube2_oboe_lqr2_ptc(void)
     q_qube2_oboe_lqr2_ptc_B.errore_inseguimento[1] = 0.0;
     q_qube2_oboe_lqr2_ptc_B.comando_u = 0.0;
     q_qube2_oboe_lqr2_ptc_B.valore_x3_stima_per_conferma = 0.0;
-    q_qube2_oboe_lqr2_ptc_B.Subtract2 = 0.0;
+    q_qube2_oboe_lqr2_ptc_B.comandoudopocompensazione = 0.0;
     q_qube2_oboe_lqr2_ptc_B.Saturation1 = 0.0;
     q_qube2_oboe_lqr2_ptc_B.Step1 = 0.0;
     q_qube2_oboe_lqr2_ptc_B.Subtract1 = 0.0;

@@ -521,7 +521,7 @@
 	  section.data(7).logicalSrcIdx = 6;
 	  section.data(7).dtTransOffset = 7;
 	
-	  ;% q_qube2_oboe_sin_B.errore_inseguimento
+	  ;% q_qube2_oboe_sin_B.errore_riferimento_stima
 	  section.data(8).logicalSrcIdx = 7;
 	  section.data(8).dtTransOffset = 9;
 	
@@ -545,7 +545,7 @@
 	  section.data(13).logicalSrcIdx = 12;
 	  section.data(13).dtTransOffset = 15;
 	
-	  ;% q_qube2_oboe_sin_B.Subtract3
+	  ;% q_qube2_oboe_sin_B.errore_riferimento_uscita
 	  section.data(14).logicalSrcIdx = 13;
 	  section.data(14).dtTransOffset = 16;
 	
@@ -555,11 +555,11 @@
 	
 	  ;% q_qube2_oboe_sin_B.TmpSignalConversionAtDiscreteSt
 	  section.data(16).logicalSrcIdx = 15;
-	  section.data(16).dtTransOffset = 27;
+	  section.data(16).dtTransOffset = 28;
 	
 	  ;% q_qube2_oboe_sin_B.HILReadAnalog
 	  section.data(17).logicalSrcIdx = 16;
-	  section.data(17).dtTransOffset = 29;
+	  section.data(17).dtTransOffset = 30;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(1) = section;
@@ -747,8 +747,8 @@
   ;%
 
 
-  targMap.checksum0 = 1677668477;
-  targMap.checksum1 = 2605551579;
-  targMap.checksum2 = 1973977575;
-  targMap.checksum3 = 284641773;
+  targMap.checksum0 = 2648149723;
+  targMap.checksum1 = 4007181622;
+  targMap.checksum2 = 2073451912;
+  targMap.checksum3 = 4026996315;
 

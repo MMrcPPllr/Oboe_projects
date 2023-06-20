@@ -7,9 +7,9 @@
  *
  * Code generation for model "q_qube2_oboe_lqr1_ptc".
  *
- * Model version              : 4.10
+ * Model version              : 4.12
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue May 30 12:10:30 2023
+ * C source code generated on : Fri Jun  9 16:55:06 2023
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -140,10 +140,10 @@ P_q_qube2_oboe_lqr1_ptc_T q_qube2_oboe_lqr1_ptc_P = {
    */
   0.0,
 
-  /* Expression: 200
+  /* Expression: 100
    * Referenced by: '<Root>/Sine Wave1'
    */
-  200.0,
+  100.0,
 
   /* Expression: 0
    * Referenced by: '<Root>/Sine Wave1'
@@ -225,15 +225,15 @@ P_q_qube2_oboe_lqr1_ptc_T q_qube2_oboe_lqr1_ptc_P = {
    */
   0.0,
 
-  /* Expression: 20
+  /* Expression: 15
    * Referenced by: '<Root>/+//- 10V Limit'
    */
-  20.0,
+  15.0,
 
-  /* Expression: -20
+  /* Expression: -15
    * Referenced by: '<Root>/+//- 10V Limit'
    */
-  -20.0,
+  -15.0,
 
   /* Expression: 0.0
    * Referenced by: '<Root>/Delay1'

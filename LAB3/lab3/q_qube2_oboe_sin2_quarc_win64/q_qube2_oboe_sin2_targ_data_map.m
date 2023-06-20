@@ -529,11 +529,11 @@
 	  section.data(7).logicalSrcIdx = 6;
 	  section.data(7).dtTransOffset = 8;
 	
-	  ;% q_qube2_oboe_sin2_B.errore_inseguimento
+	  ;% q_qube2_oboe_sin2_B.errore_inseguimento_rif_stima
 	  section.data(8).logicalSrcIdx = 7;
 	  section.data(8).dtTransOffset = 10;
 	
-	  ;% q_qube2_oboe_sin2_B.comando_u
+	  ;% q_qube2_oboe_sin2_B.comando_u_primadicompensazione
 	  section.data(9).logicalSrcIdx = 8;
 	  section.data(9).dtTransOffset = 12;
 	
@@ -541,7 +541,7 @@
 	  section.data(10).logicalSrcIdx = 9;
 	  section.data(10).dtTransOffset = 13;
 	
-	  ;% q_qube2_oboe_sin2_B.Subtract2
+	  ;% q_qube2_oboe_sin2_B.comado_u_dopocompensazione
 	  section.data(11).logicalSrcIdx = 10;
 	  section.data(11).dtTransOffset = 14;
 	
@@ -561,7 +561,7 @@
 	  section.data(15).logicalSrcIdx = 14;
 	  section.data(15).dtTransOffset = 18;
 	
-	  ;% q_qube2_oboe_sin2_B.Subtract3
+	  ;% q_qube2_oboe_sin2_B.errore_rif_encoder
 	  section.data(16).logicalSrcIdx = 15;
 	  section.data(16).dtTransOffset = 19;
 	
@@ -571,11 +571,11 @@
 	
 	  ;% q_qube2_oboe_sin2_B.TmpSignalConversionAtDiscreteSt
 	  section.data(18).logicalSrcIdx = 17;
-	  section.data(18).dtTransOffset = 32;
+	  section.data(18).dtTransOffset = 33;
 	
 	  ;% q_qube2_oboe_sin2_B.HILReadAnalog
 	  section.data(19).logicalSrcIdx = 18;
-	  section.data(19).dtTransOffset = 34;
+	  section.data(19).dtTransOffset = 35;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(1) = section;
@@ -771,8 +771,8 @@
   ;%
 
 
-  targMap.checksum0 = 3038805086;
-  targMap.checksum1 = 2283087972;
-  targMap.checksum2 = 1953374404;
-  targMap.checksum3 = 3518166121;
+  targMap.checksum0 = 1170352384;
+  targMap.checksum1 = 3127305450;
+  targMap.checksum2 = 390268145;
+  targMap.checksum3 = 2301272996;
 
