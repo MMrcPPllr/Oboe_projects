@@ -10,7 +10,7 @@ Lm=1.16e-3;
 
 %   Modello di stato 2x2
 A=[0 1
-    0 -0*(Bm+Kt^2/Rm)/Jt];
+    0 -1*(Bm+Kt^2/Rm)/Jt];
 B=[0; Kt/Rm/Jt];
 C=[1 0];
 
@@ -63,7 +63,7 @@ XX1=(DIST+KK(2)*XX2)/(-KK(1))
 % Usare il secondo schema simulink dlqr_est_2
 
 A1=[0 1 0
-    0 -0*(Bm+Kt^2/Rm)/Jt -Kt/Rm/Jt
+    0 -1*(Bm+Kt^2/Rm)/Jt -Kt/Rm/Jt
     0 0 0]
 B1= [0 Kt/Rm/Jt 0]';
 C1=eye(3);
