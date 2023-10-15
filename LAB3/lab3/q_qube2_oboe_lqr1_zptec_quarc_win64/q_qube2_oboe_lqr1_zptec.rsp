@@ -1,0 +1,7 @@
+q_qube2_oboe_lqr1_zptec.obj
+q_qube2_oboe_lqr1_zptec_data.obj
+q_qube2_oboe_lqr1_zptec_main.obj
+rtGetInf.obj
+rtGetNaN.obj
+rt_nonfinite.obj
+rt_sim.obj

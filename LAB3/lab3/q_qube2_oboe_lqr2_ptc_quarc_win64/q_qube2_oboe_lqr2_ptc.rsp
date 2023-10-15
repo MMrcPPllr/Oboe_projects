@@ -1,0 +1,7 @@
+q_qube2_oboe_lqr2_ptc.obj
+q_qube2_oboe_lqr2_ptc_data.obj
+q_qube2_oboe_lqr2_ptc_main.obj
+rtGetInf.obj
+rtGetNaN.obj
+rt_nonfinite.obj
+rt_sim.obj
